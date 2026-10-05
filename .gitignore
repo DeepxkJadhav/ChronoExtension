@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.log
+.chrono/run/
+.chrono/wal/
+.chrono/dag.db-wal
+.chrono/dag.db-shm
