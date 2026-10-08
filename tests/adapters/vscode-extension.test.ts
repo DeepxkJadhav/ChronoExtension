@@ -120,8 +120,8 @@ describe("CHRONO VS Code Extension Integration", () => {
 
     await extension.activate(mock, context);
 
-    assert.equal(mock._getStatusBar().text, "$(history) CHRONO: Active");
-    assert.equal(mock._getStatusBar().command, "chrono.openScrubber");
+    assert.equal(mock._getStatusBar().text, "$(debug-step-back) Rewind Code");
+    assert.equal(mock._getStatusBar().command, "chrono.rewind");
     assert.ok(context.subscriptions.length >= 4, "Registers event listeners and commands");
   });
 
@@ -137,7 +137,7 @@ describe("CHRONO VS Code Extension Integration", () => {
     await mock._simulateTyping("return 2;", 20, 9);
 
     // The extension seamlessly records without any terminal intervention
-    assert.equal(mock._getStatusBar().text, "$(history) CHRONO: Active");
+    assert.equal(mock._getStatusBar().text, "$(debug-step-back) Rewind Code");
   });
 
   test("opens scrubber webview and executes buffer rollback upon restore", async () => {

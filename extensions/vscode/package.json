@@ -40,13 +40,15 @@
       },
       {
         "command": "chrono.rewind",
-        "title": "CHRONO: Rewind to Previous Safe Moment",
-        "category": "CHRONO"
+        "title": "CHRONO: Rewind to Safe State",
+        "category": "CHRONO",
+        "icon": "$(debug-step-back)"
       },
       {
         "command": "chrono.newExperiment",
         "title": "CHRONO: Fork New Experiment Branch",
-        "category": "CHRONO"
+        "category": "CHRONO",
+        "icon": "$(git-branch)"
       },
       {
         "command": "chrono.toggleRecording",
@@ -56,11 +58,6 @@
     ],
     "keybindings": [
       {
-        "command": "chrono.openScrubber",
-        "key": "ctrl+shift+t",
-        "mac": "cmd+shift+t"
-      },
-      {
         "command": "chrono.rewind",
         "key": "ctrl+shift+z",
         "mac": "cmd+shift+z"
@@ -69,8 +66,8 @@
     "menus": {
       "editor/title": [
         {
-          "command": "chrono.openScrubber",
-          "group": "navigation",
+          "command": "chrono.rewind",
+          "group": "navigation@1",
           "when": "editorTextFocus"
         }
       ]

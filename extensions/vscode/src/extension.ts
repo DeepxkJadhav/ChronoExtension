@@ -151,9 +151,9 @@ export class ChronoExtension {
 
   private setupStatusBar(vscode: any, context: VSCodeExtensionContext): void {
     this.statusBarItem = vscode.window.createStatusBarItem(1, 100);
-    this.statusBarItem.text = `$(history) CHRONO: Active`;
-    this.statusBarItem.tooltip = `CHRONO is silently recording your edits. Click or press Ctrl+Shift+T to scrub time.`;
-    this.statusBarItem.command = "chrono.openScrubber";
+    this.statusBarItem.text = `$(debug-step-back) Rewind Code`;
+    this.statusBarItem.tooltip = `CHRONO: Click to instantly rewind code to the previous safe moment`;
+    this.statusBarItem.command = "chrono.rewind";
     this.statusBarItem.show();
     context.subscriptions.push(this.statusBarItem);
   }
