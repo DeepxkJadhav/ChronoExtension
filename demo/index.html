@@ -3,26 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHRONO — Temporal Computing Layer [Interactive Scrubber Demo]</title>
+  <title>CHRONO — Time Machine for Your Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0A0A0B;
-      --surface: #141417;
-      --surface-elevated: #1B1B20;
-      --border: #26262B;
-      --border-focus: #3E3E47;
-      --timeline: #1A1A1D;
-      --node: #5A5A60;
-      --node-active: #FFFFFF;
-      --branch-main: #4A9EFF;
-      --branch-fix: #10B981;
-      --branch-exp: #A855F7;
-      --conflict: #FF4A4A;
-      --warning: #F59E0B;
-      --text: #E5E5E7;
-      --text-muted: #8A8A90;
-      --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
-      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg: #0D0E12;
+      --card-bg: #15171E;
+      --card-hover: #1C1E26;
+      --border: #232632;
+      --border-accent: #383D50;
+      
+      --accent: #3B82F6;
+      --accent-soft: rgba(59, 130, 246, 0.12);
+      --success: #10B981;
+      --success-soft: rgba(16, 185, 129, 0.12);
+      --danger: #EF4444;
+      --danger-soft: rgba(239, 68, 68, 0.15);
+      --purple: #8B5CF6;
+      --purple-soft: rgba(139, 92, 246, 0.12);
+
+      --text: #F3F4F6;
+      --text-secondary: #9CA3AF;
+      --text-muted: #6B7280;
+
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', Consolas, monospace;
     }
 
     * {
@@ -35,56 +42,107 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: var(--font-sans);
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.5;
       height: 100vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
       user-select: none;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* HEADER */
+    /* TOP MINIMAL BAR */
     header {
-      background: var(--surface);
+      background: var(--card-bg);
       border-bottom: 1px solid var(--border);
-      padding: 10px 20px;
+      height: 54px;
+      padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 48px;
+      gap: 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      font-size: 16px;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      font-size: 15px;
+      letter-spacing: -0.02em;
     }
 
-    .brand-badge {
+    .brand-icon {
+      width: 26px;
+      height: 26px;
       background: linear-gradient(135deg, #3B82F6, #8B5CF6);
-      color: white;
-      padding: 2px 7px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-
-    .header-stats {
+      border-radius: 6px;
       display: flex;
       align-items: center;
-      gap: 20px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-muted);
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
     }
 
-    .header-stat strong {
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .search-bar {
+      flex: 1;
+      max-width: 480px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 12px 7px 34px;
       color: var(--text);
+      font-size: 13px;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 14px;
+      pointer-events: none;
     }
 
     .header-actions {
@@ -94,13 +152,14 @@
     }
 
     .btn {
-      background: var(--surface-elevated);
-      color: var(--text);
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      padding: 5px 12px;
-      border-radius: 5px;
-      font-size: 12px;
-      font-family: var(--font-mono);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -109,1086 +168,921 @@
     }
 
     .btn:hover {
-      background: #25252D;
-      border-color: var(--border-focus);
+      background: var(--card-hover);
+      border-color: var(--border-accent);
     }
 
     .btn-primary {
       background: #2563EB;
       border-color: #3B82F6;
-      color: white;
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
     }
 
     .btn-primary:hover {
       background: #1D4ED8;
     }
 
-    /* MAIN CONTAINER */
-    .app-layout {
-      flex: 1;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      overflow: hidden;
+    .btn-danger {
+      background: #DC2626;
+      border-color: #EF4444;
+      color: white;
     }
 
-    /* TOP TIMELINE SCROLLER */
-    .timeline-container {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 24px;
+    /* MAIN CONTENT AREA */
+    .app-body {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      overflow: hidden;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 24px;
+      gap: 20px;
     }
 
-    .timeline-controls {
+    /* HERO TIMELINE SCRUBBER CARD */
+    .scrubber-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .scrubber-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .playback-group {
+    .scrubber-title {
+      font-size: 15px;
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .timeline-speed {
-      background: var(--surface-elevated);
+    .playback-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .round-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--bg);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.15s;
     }
 
-    .playhead-time-badge {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      padding: 4px 10px;
-      background: #1E293B;
-      border: 1px solid #334155;
-      color: #38BDF8;
-      border-radius: 4px;
+    .round-btn:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
     }
 
-    /* MULTI-TRACK TIMELINE CANVAS */
-    .tracks-canvas-wrapper {
+    /* HORIZONTAL MILESTONE TRACK */
+    .timeline-rail {
       position: relative;
-      height: 120px;
-      background: var(--timeline);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
       cursor: pointer;
     }
 
-    .tracks-svg {
-      width: 100%;
-      height: 100%;
+    .timeline-base-line {
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      height: 4px;
+      background: #252836;
+      border-radius: 2px;
     }
 
-    .track-label {
+    .timeline-progress-line {
       position: absolute;
-      left: 12px;
-      font-family: var(--font-mono);
+      left: 30px;
+      height: 4px;
+      background: linear-gradient(90deg, #3B82F6, #60A5FA);
+      border-radius: 2px;
+      transition: width 0.2s ease;
+      width: 40%;
+    }
+
+    .milestone-nodes {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      z-index: 2;
+    }
+
+    .milestone-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .milestone-item:hover {
+      transform: translateY(-2px);
+    }
+
+    .node-pin {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #1F2330;
+      border: 3px solid #4B5563;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .milestone-item.active .node-pin {
+      background: #3B82F6;
+      border-color: #FFFFFF;
+      transform: scale(1.3);
+      box-shadow: 0 0 16px rgba(59, 130, 246, 0.8);
+    }
+
+    .milestone-item.bug .node-pin {
+      border-color: #EF4444;
+      background: rgba(239, 68, 68, 0.2);
+    }
+
+    .milestone-item.branch .node-pin {
+      border-color: #10B981;
+      background: rgba(16, 185, 129, 0.2);
+    }
+
+    .milestone-item.merge .node-pin {
+      border-color: #8B5CF6;
+      background: rgba(139, 92, 246, 0.2);
+    }
+
+    .milestone-time {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .milestone-item.active .milestone-time {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* PREVIEW & ACTIONS GRID */
+    .preview-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 20px;
+      overflow: hidden;
+    }
+
+    /* LEFT: RECONSTRUCTED WORKSPACE PREVIEW */
+    .editor-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .editor-top {
+      padding: 12px 18px;
+      background: #111319;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .file-tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .file-icon {
+      color: #3B82F6;
+    }
+
+    .state-badge {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .badge-ok { background: var(--success-soft); color: var(--success); }
+    .badge-err { background: var(--danger-soft); color: #FCA5A5; }
+    .badge-branch-tag { background: var(--purple-soft); color: #C4B5FD; }
+
+    .code-scroll-area {
+      flex: 1;
+      padding: 18px;
+      background: #090A0D;
+      overflow: auto;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .code-line {
+      display: flex;
+      gap: 14px;
+    }
+
+    .line-no {
+      color: #4B5563;
+      width: 24px;
+      text-align: right;
+      user-select: none;
+    }
+
+    .line-txt {
+      flex: 1;
+      color: #E2E8F0;
+      white-space: pre-wrap;
+    }
+
+    .line-add {
+      background: rgba(16, 185, 129, 0.15);
+      border-left: 3px solid #10B981;
+      padding-left: 6px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .line-del {
+      background: rgba(239, 68, 68, 0.18);
+      border-left: 3px solid #EF4444;
+      padding-left: 6px;
+      border-radius: 0 4px 4px 0;
+      color: #FCA5A5;
+    }
+
+    /* RIGHT: HUMAN-FRIENDLY ACTION PANEL */
+    .action-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
+    }
+
+    .summary-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .summary-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .summary-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .status-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-icon {
+      font-size: 18px;
+    }
+
+    .status-text-title {
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .status-text-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* BUTTONS BLOCK */
+    .primary-action-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .big-btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+    }
+
+    .big-btn-restore {
+      background: #2563EB;
+      color: white;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+
+    .big-btn-restore:hover {
+      background: #1D4ED8;
+      transform: translateY(-1px);
+    }
+
+    .big-btn-branch {
+      background: var(--bg);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .big-btn-branch:hover {
+      background: var(--card-hover);
+      border-color: var(--purple);
+    }
+
+    /* SIMPLE NATURAL LANGUAGE QUERY CHIPS */
+    .quick-searches {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .quick-title {
+      font-size: 12px;
       font-weight: 600;
       color: var(--text-muted);
-      pointer-events: none;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    .track-main { top: 20px; color: var(--branch-main); }
-    .track-fix { top: 58px; color: var(--branch-fix); }
-    .track-term { top: 94px; color: #F59E0B; }
-
-    /* PLAYHEAD LINE */
-    .playhead-bar {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: #FFFFFF;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(59, 130, 246, 0.5);
-      pointer-events: none;
-      transition: left 0.08s ease-out;
-      z-index: 10;
-    }
-
-    .playhead-needle {
-      position: absolute;
-      top: 0;
-      left: -6px;
-      width: 14px;
-      height: 14px;
-      background: #FFFFFF;
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-    }
-
-    /* CENTER WORKSPACE PANELS */
-    .workspace-grid {
-      display: grid;
-      grid-template-columns: 280px 1fr 340px;
-      overflow: hidden;
-      height: 100%;
-    }
-
-    /* LEFT SIDEBAR: NODE INSPECTOR & HISTORY */
-    .sidebar {
-      background: var(--surface);
-      border-right: 1px solid var(--border);
+    .chip-list {
       display: flex;
-      flex-direction: column;
-      overflow: hidden;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
-    .panel-header {
-      padding: 10px 14px;
-      border-bottom: 1px solid var(--border);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .node-list {
-      flex: 1;
-      overflow-y: auto;
-      list-style: none;
-    }
-
-    .node-item {
-      padding: 10px 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      transition: background 0.1s ease;
-    }
-
-    .node-item:hover {
-      background: var(--surface-elevated);
-    }
-
-    .node-item.active {
-      background: #182234;
-      border-left: 3px solid #3B82F6;
-    }
-
-    .node-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: var(--font-mono);
-      font-size: 11px;
-    }
-
-    .node-cid {
-      color: #93C5FD;
-      font-weight: 600;
-    }
-
-    .node-time {
-      color: var(--text-muted);
-      font-size: 10px;
-    }
-
-    .node-title {
+    .search-chip {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 6px;
       font-size: 12px;
-      font-weight: 500;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+    }
+
+    .search-chip:hover {
+      border-color: var(--accent);
       color: var(--text);
+      background: var(--accent-soft);
     }
 
-    .node-badge {
-      font-size: 10px;
-      font-family: var(--font-mono);
-      padding: 1px 5px;
-      border-radius: 3px;
-      display: inline-block;
-      width: fit-content;
-    }
-
-    .badge-snapshot { background: #064E3B; color: #6EE7B7; }
-    .badge-delta { background: #1E3A8A; color: #93C5FD; }
-    .badge-bug { background: #7F1D1D; color: #FCA5A5; }
-    .badge-branch { background: #3730A3; color: #C7D2FE; }
-
-    /* MIDDLE: CODE BUFFER REPLAY VIEW */
-    .editor-view {
-      background: #0D0D10;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .editor-tabs {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      height: 36px;
-      padding: 0 12px;
-      gap: 8px;
-    }
-
-    .editor-tab {
-      background: #0D0D10;
-      border: 1px solid var(--border);
-      border-bottom: none;
-      padding: 6px 14px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      border-radius: 4px 4px 0 0;
-      color: #E2E8F0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .tab-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10B981;
-    }
-
-    .editor-code-container {
-      flex: 1;
-      display: flex;
-      overflow: auto;
-      padding: 16px 0;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .line-numbers {
-      width: 48px;
-      color: #4B5563;
-      text-align: right;
-      padding-right: 14px;
-      user-select: none;
-    }
-
-    .code-content {
-      flex: 1;
-      color: #E2E8F0;
-      white-space: pre;
-      tab-size: 2;
-    }
-
-    .code-highlight-mod {
-      background: rgba(59, 130, 246, 0.15);
-      border-left: 3px solid #3B82F6;
-      margin-left: -3px;
-      display: block;
-    }
-
-    .code-highlight-del {
-      background: rgba(239, 68, 68, 0.18);
-      border-left: 3px solid #EF4444;
-      margin-left: -3px;
-      display: block;
-      color: #F87171;
-    }
-
-    .code-highlight-add {
-      background: rgba(16, 185, 129, 0.18);
-      border-left: 3px solid #10B981;
-      margin-left: -3px;
-      display: block;
-      color: #6EE7B7;
-    }
-
-    /* RIGHT PANEL: TERMINAL & SYSTEM METRICS */
-    .details-panel {
-      background: var(--surface);
-      border-left: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .terminal-box {
-      flex: 1;
-      background: #09090C;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      font-family: var(--font-mono);
-      font-size: 11px;
-    }
-
-    .terminal-body {
-      flex: 1;
-      padding: 12px;
-      overflow-y: auto;
-      color: #A1A1AA;
-      line-height: 1.6;
-    }
-
-    .terminal-prompt {
-      color: #10B981;
-    }
-
-    .terminal-err {
-      color: #F87171;
-    }
-
-    .state-metrics-box {
-      height: 240px;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      overflow-y: auto;
-      background: var(--surface);
-    }
-
-    .metric-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
-      padding-bottom: 4px;
-    }
-
-    .metric-label {
-      color: var(--text-muted);
-    }
-
-    .metric-val {
-      font-family: var(--font-mono);
-      color: #F3F4F6;
-      font-weight: 500;
-    }
-
-    /* BOTTOM: CQL QUERY BAR & CONSOLE */
-    .cql-section {
-      background: var(--surface-elevated);
-      border-top: 1px solid var(--border);
-      padding: 12px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .cql-input-bar {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .cql-prompt-label {
-      font-family: var(--font-mono);
-      font-weight: 700;
-      color: #8B5CF6;
-      font-size: 13px;
-    }
-
-    .cql-input {
-      flex: 1;
-      background: #0A0A0C;
-      border: 1px solid var(--border);
-      color: #F8FAFC;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      padding: 8px 12px;
-      border-radius: 5px;
-      outline: none;
-      transition: border-color 0.15s ease;
-    }
-
-    .cql-input:focus {
-      border-color: #8B5CF6;
-      box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
-    }
-
-    .cql-presets {
-      display: flex;
-      gap: 8px;
-      font-size: 11px;
-    }
-
-    .preset-pill {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2px 8px;
-      border-radius: 12px;
-      cursor: pointer;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      transition: all 0.1s ease;
-    }
-
-    .preset-pill:hover {
+    /* TOAST ALERT */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1E2330;
+      border: 1px solid #38BDF8;
       color: white;
-      border-color: #8B5CF6;
-    }
-
-    .cql-results-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      margin-top: 6px;
-      display: none;
-      max-height: 120px;
-      overflow-y: auto;
-    }
-
-    .cql-results-table th {
-      text-align: left;
-      padding: 4px 8px;
-      background: #1E1B4B;
-      color: #C7D2FE;
-    }
-
-    .cql-results-table td {
-      padding: 4px 8px;
-      border-bottom: 1px solid var(--border);
-      color: #CBD5E1;
-    }
-
-    /* KEYBOARD SHORTCUTS MODAL / BAR */
-    .shortcuts-bar {
-      background: #050507;
-      padding: 4px 20px;
-      font-size: 10px;
-      font-family: var(--font-mono);
-      color: #64748B;
+      padding: 12px 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       display: flex;
-      justify-content: space-between;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 100;
     }
 
-    kbd {
-      background: #1E293B;
-      color: #94A3B8;
-      padding: 1px 4px;
-      border-radius: 3px;
-      border: 1px solid #334155;
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* FOOTER */
+    footer {
+      height: 38px;
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-link {
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- MINIMAL HEADER -->
   <header>
     <div class="brand">
+      <div class="brand-icon">⏳</div>
       <span>CHRONO</span>
-      <span class="brand-badge">PROTOCOL v1.0</span>
-      <span style="font-size: 11px; font-weight: normal; color: var(--text-muted);">Temporal Computing State Scrubber</span>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Recording Active</span>
+      </div>
     </div>
 
-    <div class="header-stats">
-      <div class="header-stat">Replay Latency: <strong id="stat-latency">0.024ms</strong></div>
-      <div class="header-stat">Determinism: <strong style="color: #10B981;">100.0% (50/50 runs)</strong></div>
-      <div class="header-stat">Graph CIDs: <strong id="stat-nodes-count">5</strong></div>
-      <div class="header-stat">Active Branch: <strong id="stat-active-branch" style="color: #38BDF8;">main</strong></div>
+    <!-- SIMPLE UNIVERSAL SEARCH -->
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="search-input" placeholder="Search past work (e.g. 'broken test', 'auth.ts', 'safe version')..." />
     </div>
 
     <div class="header-actions">
-      <button class="btn" id="btn-branch" title="Create fork from current playhead (Key: B)">
-        <span>🌱 Branch</span>
+      <button class="btn" id="btn-quick-branch" title="Create a sandbox experiment without touching main work">
+        <span>🌱 New Experiment</span>
       </button>
-      <button class="btn" id="btn-merge" title="Perform 3-way semantic merge (Key: M)">
-        <span>🔀 Merge</span>
-      </button>
-      <button class="btn btn-primary" id="btn-revert" title="Restore workstation to playhead state">
-        <span>⏮ Checkout Playhead</span>
+      <button class="btn btn-primary" id="btn-quick-restore" title="Restore your workstation to the selected moment">
+        <span>⏮ Rewind to Safe</span>
       </button>
     </div>
   </header>
 
-  <!-- MAIN APP LAYOUT -->
-  <div class="app-layout">
-    
-    <!-- TOP TIMELINE SCROLLER -->
-    <div class="timeline-container">
-      <div class="timeline-controls">
-        <div class="playback-group">
-          <button class="btn" id="btn-step-start" title="First Node (Home)">⏮</button>
-          <button class="btn" id="btn-step-prev" title="Step Back (Left Arrow)">◀</button>
-          <button class="btn btn-primary" id="btn-play" title="Play / Pause Replay (Space)">▶ Play</button>
-          <button class="btn" id="btn-step-next" title="Step Forward (Right Arrow)">▶</button>
-          <button class="btn" id="btn-step-end" title="Latest Node (End)">⏭</button>
-          <select class="timeline-speed" id="playback-speed">
-            <option value="1">1x Speed</option>
-            <option value="2">2x Speed</option>
-            <option value="4">4x Speed</option>
-          </select>
+  <!-- MAIN APP CONTAINER -->
+  <div class="app-body">
+
+    <!-- HERO VISUAL TIMELINE SCRUBBER -->
+    <div class="scrubber-card">
+      <div class="scrubber-top">
+        <div class="scrubber-title">
+          <span>Timeline Scrubber</span>
+          <span style="font-size: 12px; font-weight: normal; color: var(--text-muted);">— Drag or click anywhere to jump in time</span>
         </div>
 
-        <div style="display: flex; gap: 10px; align-items: center;">
-          <span style="font-size: 11px; color: var(--text-muted);">Playhead Position:</span>
-          <div class="playhead-time-badge" id="playhead-label">t - 20m 00s (edit-2: bug introduced)</div>
+        <div class="playback-controls">
+          <button class="round-btn" id="btn-prev" title="Step Back (Left Arrow)">◀</button>
+          <button class="round-btn" id="btn-play" style="width: 70px; gap: 4px; font-size: 12px;">▶ Play</button>
+          <button class="round-btn" id="btn-next" title="Step Forward (Right Arrow)">▶</button>
         </div>
       </div>
 
-      <!-- INTERACTIVE MULTI-TRACK TIMELINE CANVAS -->
-      <div class="tracks-canvas-wrapper" id="tracks-wrapper">
-        <span class="track-label track-main">Track: main</span>
-        <span class="track-label track-fix">Track: fix/jwt-auth</span>
-        <span class="track-label track-term">Track: terminal / tests</span>
+      <!-- INTERACTIVE RAIL -->
+      <div class="timeline-rail" id="timeline-rail">
+        <div class="timeline-base-line"></div>
+        <div class="timeline-progress-line" id="progress-line"></div>
 
-        <div class="playhead-bar" id="playhead-bar" style="left: 45%;">
-          <div class="playhead-needle"></div>
+        <div class="milestone-nodes" id="milestones-container">
+          <!-- Populated by JS -->
         </div>
-
-        <svg class="tracks-svg" id="timeline-svg" viewBox="0 0 1000 120" preserveAspectRatio="none">
-          <!-- Background track rails -->
-          <line x1="80" y1="26" x2="980" y2="26" stroke="#232328" stroke-width="2" stroke-dasharray="4,4" />
-          <line x1="80" y1="64" x2="980" y2="64" stroke="#232328" stroke-width="2" stroke-dasharray="4,4" />
-          <line x1="80" y1="100" x2="980" y2="100" stroke="#232328" stroke-width="2" stroke-dasharray="4,4" />
-
-          <!-- Dynamic SVG content drawn by JS -->
-          <g id="svg-connections"></g>
-          <g id="svg-nodes"></g>
-        </svg>
       </div>
     </div>
 
-    <!-- WORKSPACE PANELS -->
-    <div class="workspace-grid">
+    <!-- PREVIEW & HUMAN CONTROLS -->
+    <div class="preview-grid">
       
-      <!-- LEFT: NODE LINEAGE LIST -->
-      <div class="sidebar">
-        <div class="panel-header">
-          <span>Temporal Lineage</span>
-          <span style="font-family: var(--font-mono); font-size: 10px; color: #3B82F6;">DAG ORDER</span>
-        </div>
-        <ul class="node-list" id="nodes-container">
-          <!-- Populated dynamically -->
-        </ul>
-      </div>
-
-      <!-- MIDDLE: INSTANT REPLAY BUFFER PREVIEW -->
-      <div class="editor-view">
-        <div class="editor-tabs">
-          <div class="editor-tab">
-            <span class="tab-dot"></span>
-            <span>src/auth.ts</span>
-            <span style="font-size: 10px; color: var(--text-muted);">(Reconstructed buffer)</span>
+      <!-- LEFT: WORKSPACE / FILE RECONSTRUCTION -->
+      <div class="editor-card">
+        <div class="editor-top">
+          <div class="file-tab">
+            <span class="file-icon">📄</span>
+            <span id="preview-filename">src/auth.ts</span>
+            <span style="color: var(--text-muted); font-size: 11px;">(Sub-millisecond instant replay)</span>
           </div>
-          <div style="margin-left: auto; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);" id="buffer-mutation-tag">
-            Δ text.splice (+28 bytes)
+
+          <div class="state-badge badge-ok" id="preview-state-badge">
+            ✓ Working Perfectly
           </div>
         </div>
 
-        <div class="editor-code-container">
-          <div class="line-numbers" id="editor-lines">
-            1<br>2<br>3<br>4<br>5<br>6<br>7<br>8
-          </div>
-          <div class="code-content" id="editor-code">
-            // Loading reconstructed state...
-          </div>
+        <div class="code-scroll-area" id="code-container">
+          <!-- Dynamic Code Lines -->
         </div>
       </div>
 
-      <!-- RIGHT: TERMINAL & SYSTEM METRICS -->
-      <div class="details-panel">
-        
-        <div class="terminal-box">
-          <div class="panel-header">
-            <span>Terminal & Runtime Observation</span>
-            <span style="font-family: var(--font-mono); font-size: 10px; color: #10B981;">PTY:0</span>
+      <!-- RIGHT: ACTIONS & PLAIN-ENGLISH SUMMARY -->
+      <div class="action-panel">
+
+        <div class="summary-card">
+          <div class="summary-header">
+            <span class="summary-title" id="action-title">Moment in Time</span>
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);" id="action-time">19:25 (15m ago)</span>
           </div>
-          <div class="terminal-body" id="term-output">
-            $ chrono daemon --listen<br>
-            <span class="terminal-prompt">[chrono]</span> Attached to VSCode &amp; Terminal session.<br>
+
+          <p class="summary-desc" id="action-desc">
+            You inverted the token comparison logic from <code>===</code> to <code>!==</code>. This caused the login test suite to fail immediately.
+          </p>
+
+          <div class="status-box" id="status-box">
+            <div class="status-icon" id="status-icon">⚠️</div>
+            <div>
+              <div class="status-text-title" id="status-text-title">Tests Failed</div>
+              <div class="status-text-sub" id="status-text-sub">npm test exited with code 1</div>
+            </div>
+          </div>
+
+          <!-- PRIMARY ACTION BUTTONS -->
+          <div class="primary-action-block">
+            <button class="big-btn big-btn-restore" id="btn-restore-card">
+              <span>⏮ Restore Work to This Safe State</span>
+            </button>
+            <button class="big-btn big-btn-branch" id="btn-branch-card">
+              <span>🌱 Fork Branch &amp; Try Fix Here</span>
+            </button>
           </div>
         </div>
 
-        <div class="state-metrics-box">
-          <div class="panel-header" style="padding: 0 0 6px 0; border: none;">
-            <span>Cryptographic Node Proof</span>
-          </div>
-
-          <div class="metric-row">
-            <span class="metric-label">Content CID:</span>
-            <span class="metric-val" id="metric-cid" style="color: #93C5FD;">b3_c7d85...</span>
-          </div>
-          <div class="metric-row">
-            <span class="metric-label">Vector Clock:</span>
-            <span class="metric-val" id="metric-clock">{"vscode": 1}</span>
-          </div>
-          <div class="metric-row">
-            <span class="metric-label">Causal Parents:</span>
-            <span class="metric-val" id="metric-parents">root</span>
-          </div>
-          <div class="metric-row">
-            <span class="metric-label">Adapter ID:</span>
-            <span class="metric-val" id="metric-adapter">chrono.adapter.vscode</span>
-          </div>
-          <div class="metric-row">
-            <span class="metric-label">Wall Time:</span>
-            <span class="metric-val" id="metric-wall">2026-10-08T19:40:00Z</span>
-          </div>
-          <div class="metric-row">
-            <span class="metric-label">Fold Depth:</span>
-            <span class="metric-val" id="metric-fold">0 deltas</span>
+        <!-- QUICK PRESETS / NATURAL QUESTIONS -->
+        <div class="summary-card">
+          <div class="quick-searches">
+            <div class="quick-title">Jump to common moments</div>
+            <div class="chip-list">
+              <span class="search-chip" data-step="1">Before the bug happened</span>
+              <span class="search-chip" data-step="2">Where the bug was typed</span>
+              <span class="search-chip" data-step="3">When tests broke</span>
+              <span class="search-chip" data-step="4">Experimental fix</span>
+              <span class="search-chip" data-step="5">Merged final version</span>
+            </div>
           </div>
         </div>
 
       </div>
 
-    </div>
-
-    <!-- BOTTOM: CQL QUERY BAR -->
-    <div class="cql-section">
-      <div class="cql-input-bar">
-        <span class="cql-prompt-label">CQL&gt;</span>
-        <input type="text" class="cql-input" id="cql-query" value="SELECT cid, wall_time, delta.type FROM branch('main') WHERE delta.type == 'terminal.exec';" placeholder="Enter Chrono Query Language expression (e.g. SELECT cid FROM branch('main'))..." />
-        <button class="btn btn-primary" id="btn-run-cql">Execute Query</button>
-      </div>
-
-      <div class="cql-presets">
-        <span style="color: var(--text-muted); font-size: 11px;">Presets:</span>
-        <span class="preset-pill" data-query="SELECT cid, wall_time, delta.type FROM branch('main') WHERE delta.type == 'terminal.exec';">All Failed Commands</span>
-        <span class="preset-pill" data-query="SELECT cid, delta.target_uri FROM dag() WHERE delta.target_uri == 'file:///src/auth.ts';">All Edits to auth.ts</span>
-        <span class="preset-pill" data-query="SELECT cid, branch FROM dag() WHERE branch == 'fix/jwt-auth';">Nodes on fix/jwt-auth</span>
-        <span class="preset-pill" data-query="SELECT * FROM branch('main') ORDER BY clock DESC LIMIT 3;">Recent 3 Nodes on main</span>
-      </div>
-
-      <table class="cql-results-table" id="cql-table">
-        <thead>
-          <tr id="cql-th"></tr>
-        </thead>
-        <tbody id="cql-tb"></tbody>
-      </table>
     </div>
 
   </div>
 
-  <!-- SHORTCUTS BAR -->
-  <div class="shortcuts-bar">
-    <div>
-      <kbd>Space</kbd> Play / Pause &nbsp;|&nbsp;
-      <kbd>←</kbd> <kbd>→</kbd> Step Node &nbsp;|&nbsp;
-      <kbd>B</kbd> Fork Branch &nbsp;|&nbsp;
-      <kbd>M</kbd> Merge Timelines &nbsp;|&nbsp;
-      <kbd>Cmd+K</kbd> / <kbd>Ctrl+K</kbd> CQL Bar
-    </div>
-    <div>
-      CHRONO CORE ENGINE — State is never destroyed. Local-first is physics.
-    </div>
+  <!-- TOAST FEEDBACK -->
+  <div class="toast" id="toast">
+    <span>✅ Workspace safely restored to playhead state (0.024ms)</span>
   </div>
 
-  <!-- CLIENT-SIDE CHRONO SIMULATION ENGINE -->
+  <!-- MINIMAL FOOTER -->
+  <footer>
+    <div>
+      <strong>CHRONO</strong> &bull; Simple, safe temporal computing &bull; Zero configuration
+    </div>
+    <div>
+      Shortcuts: <kbd style="background: #1E2330; padding: 2px 6px; border-radius: 4px;">Space</kbd> Play/Pause &nbsp; <kbd style="background: #1E2330; padding: 2px 6px; border-radius: 4px;">←</kbd> <kbd style="background: #1E2330; padding: 2px 6px; border-radius: 4px;">→</kbd> Step time
+    </div>
+  </footer>
+
   <script>
-    // System Data Model
-    const demoNodes = [
+    // Friendly Historical Milestones
+    const milestones = [
       {
-        id: "node-0",
-        cid: "b3_c7d85de14ff5fe505833edbf6974955fcb66a86596289ae40899cdfcc2c8111d",
-        shortCid: "b3_c7d85d",
-        label: "Genesis Workspace Snapshot",
-        branch: "main",
-        track: "main",
-        x: 120,
-        y: 26,
-        type: "snapshot",
-        clock: { "chrono.core": 1 },
-        wallTime: "18:45:00",
-        parents: [],
-        code: `// Authentication Module
-export function verify(token: string) {
-  return token === "secret";
-}`,
-        terminal: `$ npm test
-PASS src/auth.spec.ts (2 tests passed)
-Listening on port :8080`,
-        deltaTag: "Full Workspace Snapshot"
+        id: "step-0",
+        label: "Workspace Initialized",
+        timeAgo: "40m ago",
+        clock: "18:45",
+        status: "ok",
+        badge: "Clean Starting Point",
+        title: "Clean Workspace Started",
+        desc: "Everything was running cleanly with basic token verification.",
+        statusTitle: "All Tests Passing",
+        statusSub: "npm test passing (2/2 tests)",
+        icon: "✅",
+        code: [
+          { type: "normal", text: "// Authentication Module" },
+          { type: "normal", text: "export function verify(token: string) {" },
+          { type: "normal", text: "  return token === \"secret\";" },
+          { type: "normal", text: "}" }
+        ]
       },
       {
-        id: "node-1",
-        cid: "b3_e9e2ab60bbb61ffb3a7f8fb46dad95a037c9aab7494c405e22e69f4e557e0e01",
-        shortCid: "b3_e9e2ab",
-        label: "Add Token Versioning Comment",
-        branch: "main",
-        track: "main",
-        x: 320,
-        y: 26,
-        type: "delta",
-        clock: { "chrono.core": 1, "chrono.adapter.vscode": 1 },
-        wallTime: "19:05:12",
-        parents: ["b3_c7d85d"],
-        code: `// Authentication Module
-// Token verification v1.1
-export function verify(token: string) {
-  return token === "secret";
-}`,
-        terminal: `$ chrono status
-[adapter.vscode] Delta captured: text.splice (+28 bytes)
-Synchronized with local WAL.`,
-        deltaTag: "Δ text.splice (+28 chars)"
+        id: "step-1",
+        label: "Added Header Note",
+        timeAgo: "25m ago",
+        clock: "19:05",
+        status: "ok",
+        badge: "Safe Version",
+        title: "Added Documentation Note",
+        desc: "Added a header comment. Authentication logic remained completely safe and functional.",
+        statusTitle: "All Tests Passing",
+        statusSub: "Build & tests green",
+        icon: "✅",
+        code: [
+          { type: "normal", text: "// Authentication Module" },
+          { type: "add", text: "+ // Token verification v1.1" },
+          { type: "normal", text: "export function verify(token: string) {" },
+          { type: "normal", text: "  return token === \"secret\";" },
+          { type: "normal", text: "}" }
+        ]
       },
       {
-        id: "node-2",
-        cid: "b3_5333e8e5889a5433fb3afeded01d0b07e6f347bb0e2bd6627ae7f4a53ae237f1",
-        shortCid: "b3_5333e8",
-        label: "⚠ Bug: Inverted Auth Logic ('===' -> '!==')",
-        branch: "main",
-        track: "main",
-        x: 540,
-        y: 26,
-        type: "bug",
-        clock: { "chrono.core": 1, "chrono.adapter.vscode": 2 },
-        wallTime: "19:25:44",
-        parents: ["b3_e9e2ab"],
-        code: `// Authentication Module
-// Token verification v1.1
-export function verify(token: string) {
-  // BUG: inverted comparison!
-  return token !== "secret";
-}`,
-        terminal: `$ git diff (unstaged)
--  return token === "secret";
-+  return token !== "secret";`,
-        deltaTag: "Δ text.splice ('===' -> '!==')"
+        id: "step-2",
+        label: "Bug Introduced",
+        timeAgo: "15m ago",
+        clock: "19:25",
+        status: "bug",
+        badge: "⚠️ Bug Introduced",
+        title: "Inverted Login Check",
+        desc: "Accidentally changed '===' to '!=='. Anyone with the wrong token could log in, and valid users were blocked!",
+        statusTitle: "Logic Vulnerability",
+        statusSub: "Diff shows inverted logic on line 4",
+        icon: "⚠️",
+        code: [
+          { type: "normal", text: "// Authentication Module" },
+          { type: "normal", text: "// Token verification v1.1" },
+          { type: "normal", text: "export function verify(token: string) {" },
+          { type: "del", text: "-   return token !== \"secret\";  // <-- ACCIDENTAL BUG" },
+          { type: "normal", text: "}" }
+        ]
       },
       {
-        id: "node-3",
-        cid: "b3_6e2f904ea8cb5f6d13c635d9ade803926b1b4dc04a53601550a47c2c3deb4330",
-        shortCid: "b3_6e2f90",
-        label: "❌ Test Failed in Terminal",
-        branch: "main",
-        track: "term",
-        x: 650,
-        y: 100,
-        type: "terminal.exec",
-        clock: { "chrono.core": 1, "chrono.adapter.vscode": 2, "chrono.adapter.terminal": 1 },
-        wallTime: "19:35:01",
-        parents: ["b3_5333e8"],
-        code: `// Authentication Module
-// Token verification v1.1
-export function verify(token: string) {
-  // BUG: inverted comparison!
-  return token !== "secret";
-}`,
-        terminal: `$ npm test -- auth.spec.ts
-● auth › verify token
-  Expected: true
-  Received: false
-  at verify (src/auth.ts:5:10)
-
-Tests: 1 failed, 1 passed, 2 total
-Exit code: 1`,
-        deltaTag: "Δ terminal.exec (exit_code: 1)"
+        id: "step-3",
+        label: "Tests Failed",
+        timeAgo: "8m ago",
+        clock: "19:35",
+        status: "danger",
+        badge: "❌ 1 Test Failed",
+        title: "Terminal Test Suite Failed",
+        desc: "Running 'npm test' failed immediately with an error: Expected true but got false on valid token.",
+        statusTitle: "Exit Code 1",
+        statusSub: "src/auth.spec.ts failed in terminal",
+        icon: "❌",
+        code: [
+          { type: "normal", text: "// Authentication Module" },
+          { type: "normal", text: "// Token verification v1.1" },
+          { type: "normal", text: "export function verify(token: string) {" },
+          { type: "del", text: "-   return token !== \"secret\";" },
+          { type: "normal", text: "}" }
+        ]
       },
       {
-        id: "node-4",
-        cid: "b3_0508b66d13cf81e2c57365bdfd7b8e8ea344dc7b51d2767cc85d71e753a52a40",
-        shortCid: "b3_0508b6",
-        label: "🌱 Speculative Fix: Constant-Time Token",
-        branch: "fix/jwt-auth",
-        track: "fix",
-        x: 480,
-        y: 64,
-        type: "branch",
-        clock: { "chrono.core": 1, "chrono.adapter.vscode": 3 },
-        wallTime: "19:40:15",
-        parents: ["b3_e9e2ab"],
-        code: `// Authentication Module
-// Secured with constant-time comparison
-// Token verification v1.1
-export function verify(token: string) {
-  return crypto.timingSafeEqual(Buffer.from(token), Buffer.from("secret"));
-}`,
-        terminal: `$ npm test -- auth.spec.ts
-PASS src/auth.spec.ts
-  ✓ validates auth token securely (3ms)
-Exit code: 0`,
-        deltaTag: "Δ fork from safe ancestor b3_e9e2ab"
+        id: "step-4",
+        label: "Experiment: Safe Token",
+        timeAgo: "3m ago",
+        clock: "19:40",
+        status: "branch",
+        badge: "🌱 Speculative Fix",
+        title: "Experimental Timing Fix",
+        desc: "Created a sandbox branch 'fix/jwt-auth' from the safe version and replaced it with constant-time security.",
+        statusTitle: "Sandbox Experiment",
+        statusSub: "Tests pass in isolation",
+        icon: "🌱",
+        code: [
+          { type: "normal", text: "// Authentication Module" },
+          { type: "add", text: "+ // Secured with constant-time comparison" },
+          { type: "normal", text: "// Token verification v1.1" },
+          { type: "normal", text: "export function verify(token: string) {" },
+          { type: "add", text: "+   return crypto.timingSafeEqual(Buffer.from(token), Buffer.from(\"secret\"));" },
+          { type: "normal", text: "}" }
+        ]
       },
       {
-        id: "node-5",
-        cid: "b3_8f9931bfa2478e11049ad56041ecfa7c85e2193b01a61c360098df10950346c2",
-        shortCid: "b3_8f9931",
-        label: "🔀 3-Way Clean Auto-Merge into Main",
-        branch: "main",
-        track: "main",
-        x: 850,
-        y: 26,
-        type: "merge",
-        clock: { "chrono.core": 2, "chrono.adapter.vscode": 4 },
-        wallTime: "19:44:00",
-        parents: ["b3_6e2f90", "b3_0508b6"],
-        code: `// Authentication Module
-// Secured with constant-time comparison
-// Token verification v1.1
-export function verify(token: string) {
-  return crypto.timingSafeEqual(Buffer.from(token), Buffer.from("secret"));
-}`,
-        terminal: `$ chrono merge fix/jwt-auth into main
-LCA found: b3_e9e2ab60bbb...
-Evaluating 3-way semantic deltas...
-0 conflicts detected. Fast-forward merge committed as b3_8f9931!`,
-        deltaTag: "🔀 3-Way Semantic Automerge"
+        id: "step-5",
+        label: "Clean Auto-Merge",
+        timeAgo: "Just now",
+        clock: "19:44",
+        status: "merge",
+        badge: "✨ Ready & Merged",
+        title: "Reconciled Into Main",
+        desc: "CHRONO automatically merged the working fix into your main branch with 0 conflicts.",
+        statusTitle: "Clean State Reconciled",
+        statusSub: "Everything working as planned",
+        icon: "✨",
+        code: [
+          { type: "normal", text: "// Authentication Module" },
+          { type: "normal", text: "// Secured with constant-time comparison" },
+          { type: "normal", text: "// Token verification v1.1" },
+          { type: "normal", text: "export function verify(token: string) {" },
+          { type: "normal", text: "  return crypto.timingSafeEqual(Buffer.from(token), Buffer.from(\"secret\"));" },
+          { type: "normal", text: "}" }
+        ]
       }
     ];
 
-    // State Variables
-    let currentIndex = 2; // Default starting at the bug introduction
+    let currentIndex = 2; // Default to the bug
     let isPlaying = false;
-    let playInterval = null;
+    let playTimer = null;
 
-    // DOM Elements
-    const playheadBar = document.getElementById("playhead-bar");
-    const playheadLabel = document.getElementById("playhead-label");
-    const nodesContainer = document.getElementById("nodes-container");
-    const editorCode = document.getElementById("editor-code");
-    const editorLines = document.getElementById("editor-lines");
-    const bufferMutationTag = document.getElementById("buffer-mutation-tag");
-    const termOutput = document.getElementById("term-output");
-    const metricCid = document.getElementById("metric-cid");
-    const metricClock = document.getElementById("metric-clock");
-    const metricParents = document.getElementById("metric-parents");
-    const metricWall = document.getElementById("metric-wall");
-    const metricFold = document.getElementById("metric-fold");
-    const statActiveBranch = document.getElementById("stat-active-branch");
-    const statNodesCount = document.getElementById("stat-nodes-count");
+    // Elements
+    const milestonesContainer = document.getElementById("milestones-container");
+    const progressLine = document.getElementById("progress-line");
+    const codeContainer = document.getElementById("code-container");
+    const previewBadge = document.getElementById("preview-state-badge");
+    const actionTitle = document.getElementById("action-title");
+    const actionTime = document.getElementById("action-time");
+    const actionDesc = document.getElementById("action-desc");
+    const statusBox = document.getElementById("status-box");
+    const statusIcon = document.getElementById("status-icon");
+    const statusTitle = document.getElementById("status-text-title");
+    const statusSub = document.getElementById("status-text-sub");
+    const toast = document.getElementById("toast");
     const btnPlay = document.getElementById("btn-play");
-    const tracksWrapper = document.getElementById("tracks-wrapper");
-    const svgNodes = document.getElementById("svg-nodes");
-    const svgConnections = document.getElementById("svg-connections");
 
-    // Initialize SVG Connections & Nodes
-    function renderTimelineGraph() {
-      svgConnections.innerHTML = "";
-      svgNodes.innerHTML = "";
+    // Render Milestone Pins
+    function renderMilestones() {
+      milestonesContainer.innerHTML = "";
+      milestones.forEach((m, idx) => {
+        const item = document.createElement("div");
+        item.className = `milestone-item ${m.status} ${idx === currentIndex ? "active" : ""}`;
+        item.onclick = () => selectStep(idx);
 
-      // Draw Edges
-      const connections = [
-        { from: demoNodes[0], to: demoNodes[1], color: "#4A9EFF" },
-        { from: demoNodes[1], to: demoNodes[2], color: "#4A9EFF" },
-        { from: demoNodes[2], to: demoNodes[3], color: "#F59E0B" },
-        { from: demoNodes[1], to: demoNodes[4], color: "#10B981", curve: true },
-        { from: demoNodes[4], to: demoNodes[5], color: "#10B981", merge: true },
-        { from: demoNodes[2], to: demoNodes[5], color: "#4A9EFF", dash: true }
-      ];
-
-      connections.forEach(conn => {
-        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        let d = "";
-        if (conn.curve) {
-          // Curved fork
-          d = `M ${conn.from.x} ${conn.from.y} C ${conn.from.x + 40} ${conn.from.y}, ${conn.to.x - 40} ${conn.to.y}, ${conn.to.x} ${conn.to.y}`;
-        } else if (conn.merge) {
-          // Curved merge
-          d = `M ${conn.from.x} ${conn.from.y} C ${conn.from.x + 80} ${conn.from.y}, ${conn.to.x - 60} ${conn.to.y}, ${conn.to.x} ${conn.to.y}`;
-        } else {
-          d = `M ${conn.from.x} ${conn.from.y} L ${conn.to.x} ${conn.to.y}`;
-        }
-        path.setAttribute("d", d);
-        path.setAttribute("stroke", conn.color);
-        path.setAttribute("stroke-width", "2");
-        path.setAttribute("fill", "none");
-        if (conn.dash) path.setAttribute("stroke-dasharray", "4,4");
-        path.setAttribute("opacity", "0.6");
-        svgConnections.appendChild(path);
-      });
-
-      // Draw Nodes
-      demoNodes.forEach((node, idx) => {
-        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
-        g.style.cursor = "pointer";
-        g.onclick = () => selectNode(idx);
-
-        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        circle.setAttribute("cx", node.x);
-        circle.setAttribute("cy", node.y);
-        circle.setAttribute("r", idx === currentIndex ? "7" : "5");
-
-        let fill = "#5A5A60";
-        if (node.type === "bug") fill = "#FF4A4A";
-        else if (node.type === "branch") fill = "#10B981";
-        else if (node.type === "merge") fill = "#8B5CF6";
-        else if (node.type === "terminal.exec") fill = "#F59E0B";
-        else if (node.track === "main") fill = "#4A9EFF";
-
-        circle.setAttribute("fill", fill);
-        circle.setAttribute("stroke", idx === currentIndex ? "#FFFFFF" : "#141417");
-        circle.setAttribute("stroke-width", "2");
-        circle.id = `circle-node-${idx}`;
-
-        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        text.setAttribute("x", node.x);
-        text.setAttribute("y", node.y - 10);
-        text.setAttribute("text-anchor", "middle");
-        text.setAttribute("fill", idx === currentIndex ? "#FFFFFF" : "#8A8A90");
-        text.setAttribute("font-family", "JetBrains Mono, monospace");
-        text.setAttribute("font-size", "10");
-        text.textContent = node.shortCid;
-        text.id = `label-node-${idx}`;
-
-        g.appendChild(circle);
-        g.appendChild(text);
-        svgNodes.appendChild(g);
-      });
-    }
-
-    // Populate Sidebar Nodes List
-    function renderSidebarList() {
-      nodesContainer.innerHTML = "";
-      demoNodes.forEach((node, idx) => {
-        const li = document.createElement("li");
-        li.className = `node-item ${idx === currentIndex ? "active" : ""}`;
-        li.onclick = () => selectNode(idx);
-
-        let badgeClass = "badge-delta";
-        if (node.type === "snapshot") badgeClass = "badge-snapshot";
-        if (node.type === "bug") badgeClass = "badge-bug";
-        if (node.type === "branch") badgeClass = "badge-branch";
-
-        li.innerHTML = `
-          <div class="node-meta">
-            <span class="node-cid">${node.shortCid}...</span>
-            <span class="node-time">${node.wallTime}</span>
-          </div>
-          <div class="node-title">${node.label}</div>
-          <div>
-            <span class="node-badge ${badgeClass}">${node.type}</span>
-            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); margin-left: 6px;">${node.branch}</span>
-          </div>
+        item.innerHTML = `
+          <div class="node-pin">${idx + 1}</div>
+          <span style="font-size: 11px; font-weight: 500;">${m.label}</span>
+          <span class="milestone-time">${m.timeAgo}</span>
         `;
-        nodesContainer.appendChild(li);
+        milestonesContainer.appendChild(item);
       });
     }
 
-    // Update Displayed State to Node Index
-    function selectNode(index) {
-      if (index < 0 || index >= demoNodes.length) return;
-      currentIndex = index;
-      const node = demoNodes[currentIndex];
+    // Show Toast
+    function showToast(msg) {
+      toast.innerHTML = `<span>${msg}</span>`;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3200);
+    }
 
-      // Update playhead position on canvas
-      const wrapperWidth = tracksWrapper.clientWidth;
-      const percent = (node.x / 1000) * 100;
-      playheadBar.style.left = `${percent}%`;
+    // Select Step
+    function selectStep(idx) {
+      if (idx < 0 || idx >= milestones.length) return;
+      currentIndex = idx;
+      const m = milestones[currentIndex];
 
-      // Update labels & badges
-      playheadLabel.textContent = `${node.wallTime} — [${node.shortCid}] ${node.label}`;
-      statActiveBranch.textContent = node.branch;
-      statActiveBranch.style.color = node.branch === "main" ? "#38BDF8" : "#34D399";
-      bufferMutationTag.textContent = node.deltaTag;
+      // Update progress bar
+      const pct = (currentIndex / (milestones.length - 1)) * 100;
+      progressLine.style.width = `calc(${pct}% - 30px)`;
 
-      // Update code view
-      const lines = node.code.split("\n");
-      editorLines.innerHTML = lines.map((_, i) => i + 1).join("<br>");
-      
-      let formattedCode = node.code
-        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      
-      if (node.type === "bug") {
-        formattedCode = formattedCode.replace(
-          /return token !== "secret";/,
-          '<span class="code-highlight-del">  return token !== "secret";  // &lt;-- ALERT: INVERTED LOGIC</span>'
-        );
-      } else if (node.type === "branch" || node.type === "merge") {
-        formattedCode = formattedCode.replace(
-          /return crypto.timingSafeEqual[^;]+;/,
-          '<span class="code-highlight-add">  return crypto.timingSafeEqual(Buffer.from(token), Buffer.from("secret"));</span>'
-        );
+      // Render Active Pins
+      renderMilestones();
+
+      // Update Badge
+      previewBadge.textContent = m.badge;
+      previewBadge.className = "state-badge";
+      if (m.status === "bug" || m.status === "danger") {
+        previewBadge.classList.add("badge-err");
+      } else if (m.status === "branch" || m.status === "merge") {
+        previewBadge.classList.add("badge-branch-tag");
+      } else {
+        previewBadge.classList.add("badge-ok");
       }
-      editorCode.innerHTML = formattedCode;
 
-      // Update Terminal
-      termOutput.innerHTML = node.terminal.replace(/\n/g, "<br>");
+      // Update Code
+      codeContainer.innerHTML = "";
+      m.code.forEach((line, lineIdx) => {
+        const row = document.createElement("div");
+        row.className = "code-line";
+        if (line.type === "add") row.classList.add("line-add");
+        if (line.type === "del") row.classList.add("line-del");
 
-      // Update Metrics Card
-      metricCid.textContent = node.cid;
-      metricClock.textContent = JSON.stringify(node.clock);
-      metricParents.textContent = node.parents.length > 0 ? node.parents.join(", ") : "None (Root)";
-      metricWall.textContent = `2026-10-08T${node.wallTime}:00Z`;
-      metricFold.textContent = `${currentIndex} deltas folded`;
-
-      // Update Active Node styling
-      renderSidebarList();
-      demoNodes.forEach((_, i) => {
-        const circle = document.getElementById(`circle-node-${i}`);
-        const label = document.getElementById(`label-node-${i}`);
-        if (circle) {
-          circle.setAttribute("r", i === currentIndex ? "7" : "5");
-          circle.setAttribute("stroke", i === currentIndex ? "#FFFFFF" : "#141417");
-        }
-        if (label) {
-          label.setAttribute("fill", i === currentIndex ? "#FFFFFF" : "#8A8A90");
-        }
+        row.innerHTML = `
+          <div class="line-no">${lineIdx + 1}</div>
+          <div class="line-txt">${line.text}</div>
+        `;
+        codeContainer.appendChild(row);
       });
+
+      // Update Summary Card
+      actionTitle.textContent = m.title;
+      actionTime.textContent = `${m.clock} (${m.timeAgo})`;
+      actionDesc.innerHTML = m.desc;
+      statusIcon.textContent = m.icon;
+      statusTitle.textContent = m.statusTitle;
+      statusSub.textContent = m.statusSub;
+
+      // Status Box Styling
+      if (m.status === "bug" || m.status === "danger") {
+        statusBox.style.borderColor = "rgba(239, 68, 68, 0.4)";
+        statusBox.style.background = "rgba(239, 68, 68, 0.08)";
+      } else if (m.status === "branch") {
+        statusBox.style.borderColor = "rgba(139, 92, 246, 0.4)";
+        statusBox.style.background = "rgba(139, 92, 246, 0.08)";
+      } else {
+        statusBox.style.borderColor = "rgba(16, 185, 129, 0.3)";
+        statusBox.style.background = "rgba(16, 185, 129, 0.08)";
+      }
     }
 
     // Playback loop
     function togglePlay() {
       if (isPlaying) {
-        clearInterval(playInterval);
+        clearInterval(playTimer);
         isPlaying = false;
         btnPlay.innerHTML = "▶ Play";
       } else {
         isPlaying = true;
         btnPlay.innerHTML = "⏸ Pause";
-        const speed = parseFloat(document.getElementById("playback-speed").value) || 1;
-        playInterval = setInterval(() => {
-          if (currentIndex < demoNodes.length - 1) {
-            selectNode(currentIndex + 1);
+        playTimer = setInterval(() => {
+          if (currentIndex < milestones.length - 1) {
+            selectStep(currentIndex + 1);
           } else {
-            selectNode(0); // Loop
+            selectStep(0);
           }
-        }, 2000 / speed);
+        }, 2200);
       }
     }
 
-    // Wire Interactive Controls
-    document.getElementById("btn-step-prev").onclick = () => selectNode(currentIndex - 1);
-    document.getElementById("btn-step-next").onclick = () => selectNode(currentIndex + 1);
-    document.getElementById("btn-step-start").onclick = () => selectNode(0);
-    document.getElementById("btn-step-end").onclick = () => selectNode(demoNodes.length - 1);
+    // Interactive Buttons
+    document.getElementById("btn-prev").onclick = () => selectStep(currentIndex - 1);
+    document.getElementById("btn-next").onclick = () => selectStep(currentIndex + 1);
     btnPlay.onclick = togglePlay;
 
-    document.getElementById("btn-branch").onclick = () => {
-      selectNode(4); // Jump to speculative branch
-      alert(`Forked branch 'fix/jwt-auth' from node ${demoNodes[1].shortCid}! Now recording speculative timeline.`);
+    // Restore Actions
+    const performRestore = () => {
+      const target = milestones[1]; // Restore to safe
+      selectStep(1);
+      showToast(`⏮ Rewound back to Safe Version (${target.timeAgo})! Buffer restored in 0.024ms.`);
     };
 
-    document.getElementById("btn-merge").onclick = () => {
-      selectNode(5); // Jump to merge
-      alert("Three-way semantic merge completed with 0 conflicts! Timelines reconciled into main.");
+    document.getElementById("btn-quick-restore").onclick = performRestore;
+    document.getElementById("btn-restore-card").onclick = () => {
+      showToast(`⏮ Workspace restored to moment: "${milestones[currentIndex].title}" (0.024ms)`);
     };
 
-    document.getElementById("btn-revert").onclick = () => {
-      alert(`Restoring workstation filesystem & VSCode editor buffers to Node ${demoNodes[currentIndex].cid.slice(0, 16)}... Replay latency: 0.024ms.`);
+    // Branch Action
+    document.getElementById("btn-quick-branch").onclick = () => {
+      selectStep(4);
+      showToast(`🌱 Created experimental branch 'fix/jwt-auth'. You can test safely!`);
+    };
+    document.getElementById("btn-branch-card").onclick = () => {
+      selectStep(4);
+      showToast(`🌱 Forked experiment from ${milestones[currentIndex].label}!`);
     };
 
-    // Tracks canvas click to scrub
-    tracksWrapper.onclick = (e) => {
-      const rect = tracksWrapper.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const ratio = clickX / rect.width;
-      const targetSvgX = ratio * 1000;
-      
-      // Find closest node to click
-      let closestIdx = 0;
-      let minDiff = Infinity;
-      demoNodes.forEach((node, idx) => {
-        const diff = Math.abs(node.x - targetSvgX);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIdx = idx;
-        }
-      });
-      selectNode(closestIdx);
-    };
+    // Natural search chips
+    document.querySelectorAll(".search-chip").forEach(chip => {
+      chip.onclick = () => {
+        const step = parseInt(chip.getAttribute("data-step"), 10);
+        selectStep(step);
+      };
+    });
 
-    // Keyboard Shortcuts Listener
+    // Search bar filter
+    document.getElementById("search-input").addEventListener("input", (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      if (!q) return;
+      const foundIdx = milestones.findIndex(m => 
+        m.label.toLowerCase().includes(q) || 
+        m.desc.toLowerCase().includes(q) ||
+        m.title.toLowerCase().includes(q)
+      );
+      if (foundIdx !== -1) {
+        selectStep(foundIdx);
+      }
+    });
+
+    // Keyboard Shortcuts
     window.addEventListener("keydown", (e) => {
       if (document.activeElement.tagName === "INPUT") return;
       if (e.code === "Space") {
@@ -1196,87 +1090,15 @@ Evaluating 3-way semantic deltas...
         togglePlay();
       } else if (e.code === "ArrowLeft") {
         e.preventDefault();
-        selectNode(currentIndex - 1);
+        selectStep(currentIndex - 1);
       } else if (e.code === "ArrowRight") {
         e.preventDefault();
-        selectNode(currentIndex + 1);
-      } else if (e.key === "b" || e.key === "B") {
-        document.getElementById("btn-branch").click();
-      } else if (e.key === "m" || e.key === "M") {
-        document.getElementById("btn-merge").click();
-      } else if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        document.getElementById("cql-query").focus();
+        selectStep(currentIndex + 1);
       }
     });
 
-    // CQL Query Execution
-    const cqlTable = document.getElementById("cql-table");
-    const cqlTh = document.getElementById("cql-th");
-    const cqlTb = document.getElementById("cql-tb");
-
-    function executeCql(query) {
-      const q = query.trim();
-      cqlTh.innerHTML = "";
-      cqlTb.innerHTML = "";
-      cqlTable.style.display = "table";
-
-      if (q.includes("terminal.exec")) {
-        cqlTh.innerHTML = "<th>CID</th><th>Wall Time</th><th>Delta Type</th><th>Status</th>";
-        cqlTb.innerHTML = `<tr>
-          <td style="color: #93C5FD;">${demoNodes[3].cid.slice(0, 18)}...</td>
-          <td>${demoNodes[3].wallTime}</td>
-          <td>terminal.exec</td>
-          <td style="color: #F87171;">Exit code 1 (Failed)</td>
-        </tr>`;
-      } else if (q.includes("auth.ts")) {
-        cqlTh.innerHTML = "<th>CID</th><th>Branch</th><th>Target URI</th><th>Delta Action</th>";
-        demoNodes.filter(n => n.id !== "node-3").forEach(n => {
-          cqlTb.innerHTML += `<tr>
-            <td style="color: #93C5FD;">${n.cid.slice(0, 18)}...</td>
-            <td>${n.branch}</td>
-            <td>file:///src/auth.ts</td>
-            <td>${n.deltaTag}</td>
-          </tr>`;
-        });
-      } else if (q.includes("fix/jwt-auth")) {
-        cqlTh.innerHTML = "<th>CID</th><th>Branch</th><th>Clock</th><th>Label</th>";
-        cqlTb.innerHTML = `<tr>
-          <td style="color: #93C5FD;">${demoNodes[4].cid.slice(0, 18)}...</td>
-          <td>fix/jwt-auth</td>
-          <td>${JSON.stringify(demoNodes[4].clock)}</td>
-          <td>${demoNodes[4].label}</td>
-        </tr>`;
-      } else {
-        cqlTh.innerHTML = "<th>CID</th><th>Branch</th><th>Wall Time</th><th>Type</th>";
-        demoNodes.slice(-3).forEach(n => {
-          cqlTb.innerHTML += `<tr>
-            <td style="color: #93C5FD;">${n.cid.slice(0, 18)}...</td>
-            <td>${n.branch}</td>
-            <td>${n.wallTime}</td>
-            <td>${n.type}</td>
-          </tr>`;
-        });
-      }
-    }
-
-    document.getElementById("btn-run-cql").onclick = () => {
-      executeCql(document.getElementById("cql-query").value);
-    };
-
-    document.querySelectorAll(".preset-pill").forEach(pill => {
-      pill.onclick = () => {
-        const q = pill.getAttribute("data-query");
-        document.getElementById("cql-query").value = q;
-        executeCql(q);
-      };
-    });
-
-    // Boot
-    renderTimelineGraph();
-    renderSidebarList();
-    selectNode(currentIndex);
-    statNodesCount.textContent = demoNodes.length;
+    // Initialize
+    selectStep(currentIndex);
   </script>
 </body>
 </html>
