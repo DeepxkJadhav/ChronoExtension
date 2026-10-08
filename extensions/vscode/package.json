@@ -5,6 +5,11 @@
   "version": "1.0.0",
   "type": "module",
   "publisher": "chrono-project",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DeepxkJadhav/chrono"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
