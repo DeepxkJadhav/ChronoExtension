@@ -1,23 +1,6 @@
 {
   "communities": {
     "0": [
-      "cli_commands_branch",
-      "cli_commands_branch_branchcommand",
-      "cli_commands_branch_branchoptions",
-      "cli_commands_init",
-      "cli_commands_init_initcommand",
-      "cli_commands_init_initoptions",
-      "cli_commands_log",
-      "cli_commands_log_logcommand",
-      "cli_commands_log_logoptions",
-      "cli_commands_query",
-      "cli_commands_query_querycommand",
-      "cli_commands_query_queryoptions",
-      "cli_commands_replay",
-      "cli_commands_replay_replaycommand",
-      "cli_commands_replay_replayoptions",
-      "cli_main",
-      "cli_main_runcli",
       "core_clock_logical",
       "core_clock_logical_causalityrelation",
       "core_clock_logical_vectorclocksnapshot",
@@ -35,14 +18,20 @@
       "core_graph_dag_chronodag_getroots",
       "core_graph_dag_chronodag_getstats",
       "core_graph_dag_chronodag_hasnode",
+      "core_graph_delta",
       "core_graph_delta_applytextsplice",
+      "core_graph_delta_deltapayload",
+      "core_graph_delta_filemutationoperation",
+      "core_graph_delta_inverttextsplice",
+      "core_graph_delta_semanticdelta",
+      "core_graph_delta_terminalexecoperation",
+      "core_graph_delta_textspliceoperation",
       "core_graph_node",
       "core_graph_node_canonicalizejson",
       "core_graph_node_cid",
       "core_graph_node_computenodecid",
       "core_graph_node_nodeadapterinfo",
       "core_graph_node_nodeannotations",
-      "core_graph_node_nodekind",
       "core_graph_node_statenode",
       "core_graph_node_statenode_create",
       "core_graph_node_statenode_fromverified",
@@ -80,30 +69,13 @@
       "query_cql_evaluator_queryexecutioncontext",
       "ref_crypto",
       "ref_node_assert",
-      "ref_node_fs",
-      "ref_node_os",
-      "ref_node_path",
-      "ref_node_sqlite",
       "ref_node_test",
-      "store_backends_sqlite",
-      "store_backends_sqlite_branchinfo",
-      "store_backends_sqlite_sqlitestorage",
-      "store_backends_sqlite_sqlitestorage_close",
-      "store_backends_sqlite_sqlitestorage_constructor",
-      "store_backends_sqlite_sqlitestorage_getbranchhead",
       "store_backends_sqlite_sqlitestorage_getnode",
-      "store_backends_sqlite_sqlitestorage_initschema",
-      "store_backends_sqlite_sqlitestorage_listbranches",
       "store_backends_sqlite_sqlitestorage_loadintodag",
-      "store_backends_sqlite_sqlitestorage_savenode",
-      "store_backends_sqlite_sqlitestorage_setbranchhead",
-      "tests_adapters_vscode_extension_test",
-      "tests_adapters_vscode_extension_test_createmockvscode",
-      "tests_cli_cli_test",
+      "tests_adapters_vscode_test",
       "tests_determinism_determinism_test",
       "tests_merge_merge_test",
-      "tests_query_cql_test",
-      "tests_store_store_test"
+      "tests_query_cql_test"
     ],
     "1": [
       "adapters_sdk_adapter",
@@ -163,8 +135,7 @@
       "adapters_vscode_snapshot_texteditorlike",
       "adapters_vscode_snapshot_tostring",
       "adapters_vscode_snapshot_vscodesnapshotter",
-      "adapters_vscode_snapshot_vscodesnapshotter_capturesnapshot",
-      "tests_adapters_vscode_test"
+      "adapters_vscode_snapshot_vscodesnapshotter_capturesnapshot"
     ],
     "2": [
       "query_cql_ast",
@@ -182,17 +153,20 @@
       "query_cql_ast_projectionitem",
       "query_cql_ast_unaryexpr",
       "query_cql_evaluator",
-      "query_cql_evaluator_evaluator",
-      "query_cql_evaluator_evaluator_constructor",
-      "query_cql_evaluator_evaluator_evaluateexpression",
-      "query_cql_evaluator_evaluator_evaluatefunction",
-      "query_cql_evaluator_evaluator_execute",
-      "query_cql_evaluator_evaluator_projectrow",
-      "query_cql_evaluator_evaluator_resolvepath",
-      "query_cql_evaluator_evaluator_resolvesourcenodes",
-      "query_cql_evaluator_evaluator_walklineagefrom",
       "query_cql_evaluator_queryresultrow",
       "query_cql_lexer",
+      "query_cql_lexer_lexer",
+      "query_cql_lexer_lexer_advance",
+      "query_cql_lexer_lexer_constructor",
+      "query_cql_lexer_lexer_isalpha",
+      "query_cql_lexer_lexer_isalphanumeric",
+      "query_cql_lexer_lexer_isdigit",
+      "query_cql_lexer_lexer_readidentifier",
+      "query_cql_lexer_lexer_readnumber",
+      "query_cql_lexer_lexer_readstring",
+      "query_cql_lexer_lexer_skipcomment",
+      "query_cql_lexer_lexer_skipwhitespace",
+      "query_cql_lexer_lexer_tokenize",
       "query_cql_parser",
       "query_cql_parser_parser",
       "query_cql_parser_parser_advance",
@@ -201,6 +175,7 @@
       "query_cql_parser_parser_consume",
       "query_cql_parser_parser_isatend",
       "query_cql_parser_parser_match",
+      "query_cql_parser_parser_parse",
       "query_cql_parser_parser_parseequality",
       "query_cql_parser_parser_parseexpression",
       "query_cql_parser_parser_parsefunctioncall",
@@ -220,38 +195,46 @@
       "query_cql_tokens_tokentype"
     ],
     "3": [
-      "docs_07_testing",
-      "docs_07_testing_adversarial_ai",
+      "cli_commands_branch",
+      "cli_commands_branch_branchcommand",
+      "cli_commands_branch_branchoptions",
+      "cli_commands_init",
+      "cli_commands_init_initcommand",
+      "cli_commands_init_initoptions",
+      "cli_commands_log",
+      "cli_commands_log_logcommand",
+      "cli_commands_log_logoptions",
+      "cli_commands_query",
+      "cli_commands_query_querycommand",
+      "cli_commands_query_queryoptions",
+      "cli_commands_replay",
+      "cli_commands_replay_replaycommand",
+      "cli_commands_replay_replayoptions",
+      "cli_main",
+      "cli_main_runcli",
+      "core_graph_node_nodekind",
+      "demo_serve",
+      "demo_serve_dirname",
+      "demo_serve_html_file",
+      "demo_serve_server",
       "docs_07_testing_benchmarks",
-      "docs_07_testing_ci_pipeline",
-      "docs_07_testing_corruption",
-      "docs_07_testing_coverage",
-      "docs_07_testing_cql",
-      "docs_07_testing_cross_machine",
-      "docs_07_testing_cross_version",
-      "docs_07_testing_dag",
-      "docs_07_testing_delta",
-      "docs_07_testing_fuzz",
-      "docs_07_testing_fuzzer",
-      "docs_07_testing_kill_9",
-      "docs_07_testing_layer_1_unit_tests",
-      "docs_07_testing_layer_2_property_tests",
-      "docs_07_testing_layer_3_integration_tests",
-      "docs_07_testing_layer_4_determinism_tests",
-      "docs_07_testing_layer_5_adversarial_tests",
-      "docs_07_testing_malformed_input",
-      "docs_07_testing_manual_tests_weekly",
-      "docs_07_testing_merge",
-      "docs_07_testing_replay",
-      "docs_07_testing_testing_philosophy",
-      "docs_07_testing_testing_strategy",
-      "docs_07_testing_the_100_rule",
-      "docs_07_testing_the_five_layers",
-      "docs_07_testing_the_golden_test_suite",
-      "docs_07_testing_the_red_line",
-      "docs_07_testing_vector_clocks",
-      "docs_07_testing_visual_tests",
       "ref_node_buffer",
+      "ref_node_fs",
+      "ref_node_http",
+      "ref_node_os",
+      "ref_node_path",
+      "ref_node_sqlite",
+      "ref_node_url",
+      "store_backends_sqlite",
+      "store_backends_sqlite_branchinfo",
+      "store_backends_sqlite_sqlitestorage",
+      "store_backends_sqlite_sqlitestorage_close",
+      "store_backends_sqlite_sqlitestorage_constructor",
+      "store_backends_sqlite_sqlitestorage_getbranchhead",
+      "store_backends_sqlite_sqlitestorage_initschema",
+      "store_backends_sqlite_sqlitestorage_listbranches",
+      "store_backends_sqlite_sqlitestorage_savenode",
+      "store_backends_sqlite_sqlitestorage_setbranchhead",
       "store_wal_write_ahead",
       "store_wal_write_ahead_calculatechecksum",
       "store_wal_write_ahead_walrecord",
@@ -262,50 +245,11 @@
       "store_wal_write_ahead_writeaheadlog_open",
       "store_wal_write_ahead_writeaheadlog_replay",
       "store_wal_write_ahead_writeaheadlog_sync",
-      "store_wal_write_ahead_writeaheadlog_truncate"
+      "store_wal_write_ahead_writeaheadlog_truncate",
+      "tests_cli_cli_test",
+      "tests_store_store_test"
     ],
     "4": [
-      "extensions_vscode_src_extension",
-      "extensions_vscode_src_extension_activate",
-      "extensions_vscode_src_extension_chronoextension",
-      "extensions_vscode_src_extension_chronoextension_activate",
-      "extensions_vscode_src_extension_chronoextension_applybufferedit",
-      "extensions_vscode_src_extension_chronoextension_capturegenesissnapshot",
-      "extensions_vscode_src_extension_chronoextension_constructor",
-      "extensions_vscode_src_extension_chronoextension_deactivate",
-      "extensions_vscode_src_extension_chronoextension_getscrubberhtml",
-      "extensions_vscode_src_extension_chronoextension_ondocumentchange",
-      "extensions_vscode_src_extension_chronoextension_openscrubberwebview",
-      "extensions_vscode_src_extension_chronoextension_registercommands",
-      "extensions_vscode_src_extension_chronoextension_restorenode",
-      "extensions_vscode_src_extension_chronoextension_restoretobuffer",
-      "extensions_vscode_src_extension_chronoextension_setupstatusbar",
-      "extensions_vscode_src_extension_deactivate",
-      "extensions_vscode_src_extension_extension",
-      "extensions_vscode_src_types",
-      "extensions_vscode_src_types_dispose",
-      "extensions_vscode_src_types_ondidreceivemessage",
-      "extensions_vscode_src_types_postmessage",
-      "extensions_vscode_src_types_vscodeextensioncontext",
-      "extensions_vscode_src_types_vscodeposition",
-      "extensions_vscode_src_types_vscoderange",
-      "extensions_vscode_src_types_vscodestatusbaritem",
-      "extensions_vscode_src_types_vscodestatusbaritem_dispose",
-      "extensions_vscode_src_types_vscodestatusbaritem_hide",
-      "extensions_vscode_src_types_vscodestatusbaritem_show",
-      "extensions_vscode_src_types_vscodetextdocument",
-      "extensions_vscode_src_types_vscodetextdocument_gettext",
-      "extensions_vscode_src_types_vscodetextdocumentcontentchangeevent",
-      "extensions_vscode_src_types_vscodetexteditor",
-      "extensions_vscode_src_types_vscodetexteditor_edit",
-      "extensions_vscode_src_types_vscodeuri",
-      "extensions_vscode_src_types_vscodeuri_tostring",
-      "extensions_vscode_src_types_vscodewebviewpanel",
-      "extensions_vscode_src_types_vscodewebviewpanel_dispose",
-      "extensions_vscode_src_types_vscodewebviewpanel_ondiddispose",
-      "extensions_vscode_src_types_vscodewebviewpanel_reveal"
-    ],
-    "5": [
       "planning_graphs_graph_report_communities_37_total_0_thin_omitted",
       "planning_graphs_graph_report_community_0_index_ts",
       "planning_graphs_graph_report_community_10_faq_objections",
@@ -345,7 +289,7 @@
       "planning_graphs_graph_report_community_8_security_privacy",
       "planning_graphs_graph_report_community_9_build_plan"
     ],
-    "6": [
+    "5": [
       "docs_03_data_model",
       "docs_03_data_model_adapter_idx",
       "docs_03_data_model_adapteridentity",
@@ -378,6 +322,38 @@
       "docs_03_data_model_vectorclock",
       "docs_03_data_model_versioning",
       "docs_03_data_model_wall_time_idx"
+    ],
+    "6": [
+      "docs_07_testing",
+      "docs_07_testing_adversarial_ai",
+      "docs_07_testing_ci_pipeline",
+      "docs_07_testing_corruption",
+      "docs_07_testing_coverage",
+      "docs_07_testing_cql",
+      "docs_07_testing_cross_machine",
+      "docs_07_testing_cross_version",
+      "docs_07_testing_dag",
+      "docs_07_testing_delta",
+      "docs_07_testing_fuzz",
+      "docs_07_testing_fuzzer",
+      "docs_07_testing_kill_9",
+      "docs_07_testing_layer_1_unit_tests",
+      "docs_07_testing_layer_2_property_tests",
+      "docs_07_testing_layer_3_integration_tests",
+      "docs_07_testing_layer_4_determinism_tests",
+      "docs_07_testing_layer_5_adversarial_tests",
+      "docs_07_testing_malformed_input",
+      "docs_07_testing_manual_tests_weekly",
+      "docs_07_testing_merge",
+      "docs_07_testing_replay",
+      "docs_07_testing_testing_philosophy",
+      "docs_07_testing_testing_strategy",
+      "docs_07_testing_the_100_rule",
+      "docs_07_testing_the_five_layers",
+      "docs_07_testing_the_golden_test_suite",
+      "docs_07_testing_the_red_line",
+      "docs_07_testing_vector_clocks",
+      "docs_07_testing_visual_tests"
     ],
     "7": [
       "docs_12_glossary",
@@ -687,26 +663,6 @@
       "docs_01_product_spec_what_chrono_is_not"
     ],
     "19": [
-      "extensions_vscode_package",
-      "extensions_vscode_package_activationevents",
-      "extensions_vscode_package_categories",
-      "extensions_vscode_package_contributes",
-      "extensions_vscode_package_contributes_commands",
-      "extensions_vscode_package_contributes_keybindings",
-      "extensions_vscode_package_contributes_menus",
-      "extensions_vscode_package_description",
-      "extensions_vscode_package_displayname",
-      "extensions_vscode_package_engines",
-      "extensions_vscode_package_engines_vscode",
-      "extensions_vscode_package_keywords",
-      "extensions_vscode_package_main",
-      "extensions_vscode_package_menus_editor_title",
-      "extensions_vscode_package_name",
-      "extensions_vscode_package_publisher",
-      "extensions_vscode_package_type",
-      "extensions_vscode_package_version"
-    ],
-    "20": [
       "glossary",
       "glossary_adapter_adapter",
       "glossary_branch_branch",
@@ -725,7 +681,7 @@
       "glossary_state_node_node",
       "glossary_write_ahead_log_wal"
     ],
-    "21": [
+    "20": [
       "package",
       "package_author",
       "package_description",
@@ -743,7 +699,7 @@
       "package_type",
       "package_version"
     ],
-    "22": [
+    "21": [
       "spec_merge_semantics",
       "spec_merge_semantics_1_the_core_problem",
       "spec_merge_semantics_2_merge_algorithm_pipeline",
@@ -761,7 +717,7 @@
       "spec_merge_semantics_step_2_lineage_delta_extraction",
       "spec_merge_semantics_step_3_domain_partitioning_conflict_classification"
     ],
-    "23": [
+    "22": [
       "spec_state_model",
       "spec_state_model_1_mathematical_formalism",
       "spec_state_model_2_1_node_schema_json_schema_typescript",
@@ -778,7 +734,7 @@
       "spec_state_model_5_causal_ordering_vector_clocks",
       "spec_state_model_chrono_specification_state_model"
     ],
-    "24": [
+    "23": [
       "roadmap",
       "roadmap_chrono_roadmap",
       "roadmap_definition_of_done_dod",
@@ -794,22 +750,7 @@
       "roadmap_phase_3_semantic_3_way_merge_visual_scrubber",
       "roadmap_phase_4_semantic_ai_acceleration_p2p_replication"
     ],
-    "25": [
-      "query_cql_lexer_lexer",
-      "query_cql_lexer_lexer_advance",
-      "query_cql_lexer_lexer_constructor",
-      "query_cql_lexer_lexer_isalpha",
-      "query_cql_lexer_lexer_isalphanumeric",
-      "query_cql_lexer_lexer_isdigit",
-      "query_cql_lexer_lexer_readidentifier",
-      "query_cql_lexer_lexer_readnumber",
-      "query_cql_lexer_lexer_readstring",
-      "query_cql_lexer_lexer_skipcomment",
-      "query_cql_lexer_lexer_skipwhitespace",
-      "query_cql_lexer_lexer_tokenize",
-      "query_cql_parser_parser_parse"
-    ],
-    "26": [
+    "24": [
       "tsconfig",
       "tsconfig_compileroptions",
       "tsconfig_compileroptions_declaration",
@@ -823,7 +764,7 @@
       "tsconfig_compileroptions_target",
       "tsconfig_include"
     ],
-    "27": [
+    "25": [
       "docs_00_start_here",
       "docs_00_start_here_reading_order",
       "docs_00_start_here_start_here",
@@ -835,7 +776,7 @@
       "docs_00_start_here_the_one_sentence_version",
       "docs_00_start_here_your_identity"
     ],
-    "28": [
+    "26": [
       "spec_cql",
       "spec_cql_1_overview",
       "spec_cql_2_formal_grammar_ebnf",
@@ -847,7 +788,7 @@
       "spec_cql_example_2_find_all_changes_to_a_specific_authentication_file",
       "spec_cql_example_3_inspect_divergence_between_two_branches"
     ],
-    "29": [
+    "27": [
       "non_goals",
       "non_goals_1_chrono_is_not_a_screen_or_pixel_video_recorder",
       "non_goals_2_chrono_is_not_a_replacement_for_git",
@@ -858,7 +799,7 @@
       "non_goals_7_chrono_is_not_a_monolithic_ide_or_editor_fork",
       "non_goals_chrono_non_goals"
     ],
-    "30": [
+    "28": [
       "principles",
       "principles_chrono_principles",
       "principles_rule_1_state_is_never_destroyed",
@@ -869,7 +810,18 @@
       "principles_rule_6_cql_is_the_truth_ai_and_natural_language_are_frontend_views",
       "principles_rule_7_local_sovereignty_and_zero_secret_leakage"
     ],
-    "31": [
+    "29": [
+      "query_cql_evaluator_evaluator",
+      "query_cql_evaluator_evaluator_constructor",
+      "query_cql_evaluator_evaluator_evaluateexpression",
+      "query_cql_evaluator_evaluator_evaluatefunction",
+      "query_cql_evaluator_evaluator_execute",
+      "query_cql_evaluator_evaluator_projectrow",
+      "query_cql_evaluator_evaluator_resolvepath",
+      "query_cql_evaluator_evaluator_resolvesourcenodes",
+      "query_cql_evaluator_evaluator_walklineagefrom"
+    ],
+    "30": [
       "decisions_0001_why_a_dag_not_a_log",
       "decisions_0001_why_a_dag_not_a_log_adr_0001_why_a_directed_acyclic_graph_dag_instead_of_a_linear_log",
       "decisions_0001_why_a_dag_not_a_log_consequences",
@@ -879,7 +831,7 @@
       "decisions_0001_why_a_dag_not_a_log_status",
       "decisions_0001_why_a_dag_not_a_log_trade_offs_mitigations"
     ],
-    "32": [
+    "31": [
       "decisions_0002_semantic_deltas_vs_byte_diffs",
       "decisions_0002_semantic_deltas_vs_byte_diffs_adr_0002_semantic_deltas_vs_byte_level_diffs",
       "decisions_0002_semantic_deltas_vs_byte_diffs_consequences",
@@ -889,7 +841,7 @@
       "decisions_0002_semantic_deltas_vs_byte_diffs_status",
       "decisions_0002_semantic_deltas_vs_byte_diffs_trade_offs_mitigations"
     ],
-    "33": [
+    "32": [
       "decisions_0003_local_first_storage",
       "decisions_0003_local_first_storage_adr_0003_local_first_storage_architecture",
       "decisions_0003_local_first_storage_consequences",
@@ -899,7 +851,7 @@
       "decisions_0003_local_first_storage_status",
       "decisions_0003_local_first_storage_trade_offs_mitigations"
     ],
-    "34": [
+    "33": [
       "decisions_0004_why_a_query_language",
       "decisions_0004_why_a_query_language_adr_0004_why_a_dedicated_chrono_query_language_cql",
       "decisions_0004_why_a_query_language_consequences",
@@ -909,7 +861,7 @@
       "decisions_0004_why_a_query_language_status",
       "decisions_0004_why_a_query_language_trade_offs_mitigations"
     ],
-    "35": [
+    "34": [
       "readme",
       "readme_architecture_decisions_adrs",
       "readme_architecture_specifications",
@@ -919,7 +871,7 @@
       "readme_the_8_must_decide_files_before_coding",
       "readme_what_is_chrono"
     ],
-    "36": [
+    "35": [
       "ai_contracts_intent_parse",
       "ai_contracts_intent_parse_1_objective",
       "ai_contracts_intent_parse_2_invariants_guardrails",
@@ -928,7 +880,7 @@
       "ai_contracts_intent_parse_5_output_json_schema",
       "ai_contracts_intent_parse_ai_contract_natural_language_to_cql_compiler"
     ],
-    "37": [
+    "36": [
       "ai_contracts_summarize",
       "ai_contracts_summarize_1_objective",
       "ai_contracts_summarize_2_invariants_guardrails",
@@ -937,16 +889,7 @@
       "ai_contracts_summarize_5_output_json_schema",
       "ai_contracts_summarize_ai_contract_timeline_branch_summarization"
     ],
-    "38": [
-      "core_graph_delta",
-      "core_graph_delta_deltapayload",
-      "core_graph_delta_filemutationoperation",
-      "core_graph_delta_inverttextsplice",
-      "core_graph_delta_semanticdelta",
-      "core_graph_delta_terminalexecoperation",
-      "core_graph_delta_textspliceoperation"
-    ],
-    "39": [
+    "37": [
       "spec_adapter_contract",
       "spec_adapter_contract_1_overview",
       "spec_adapter_contract_2_adapter_capability_tiers",
@@ -955,7 +898,7 @@
       "spec_adapter_contract_5_security_secret_redaction_mandate",
       "spec_adapter_contract_chrono_specification_adapter_contract"
     ],
-    "40": [
+    "38": [
       "store_format_on_disk",
       "store_format_on_disk_1_directory_structure",
       "store_format_on_disk_2_content_addressing_hash_commitment",
@@ -964,7 +907,7 @@
       "store_format_on_disk_5_ingress_write_ahead_log_wal",
       "store_format_on_disk_chrono_specification_on_disk_storage_format"
     ],
-    "41": [
+    "39": [
       "ai_contracts_semantic_diff",
       "ai_contracts_semantic_diff_1_objective",
       "ai_contracts_semantic_diff_2_invariants_guardrails",
@@ -972,15 +915,7 @@
       "ai_contracts_semantic_diff_4_output_json_schema",
       "ai_contracts_semantic_diff_ai_contract_semantic_diff_explainer"
     ],
-    "42": [
-      "demo_serve",
-      "demo_serve_dirname",
-      "demo_serve_html_file",
-      "demo_serve_server",
-      "ref_node_http",
-      "ref_node_url"
-    ],
-    "43": [
+    "40": [
       "manifesto",
       "manifesto_chrono_manifesto",
       "manifesto_the_core_thesis",
@@ -988,13 +923,13 @@
     ]
   },
   "cohesion": {
-    "0": 0.06225014277555682,
-    "1": 0.06896551724137931,
-    "2": 0.12941176470588237,
-    "3": 0.048726467331118496,
-    "4": 0.07692307692307693,
-    "5": 0.05263157894736842,
-    "6": 0.0625,
+    "0": 0.07675675675675675,
+    "1": 0.06715063520871144,
+    "2": 0.12188552188552189,
+    "3": 0.07764876632801161,
+    "4": 0.05263157894736842,
+    "5": 0.0625,
+    "6": 0.06666666666666667,
     "7": 0.06896551724137931,
     "8": 0.09523809523809523,
     "9": 0.07407407407407407,
@@ -1007,37 +942,34 @@
     "16": 0.10526315789473684,
     "17": 0.10526315789473684,
     "18": 0.1111111111111111,
-    "19": 0.1111111111111111,
-    "20": 0.11764705882352941,
+    "19": 0.11764705882352941,
+    "20": 0.125,
     "21": 0.125,
-    "22": 0.125,
-    "23": 0.13333333333333333,
-    "24": 0.14285714285714285,
-    "25": 0.38461538461538464,
-    "26": 0.16666666666666666,
-    "27": 0.2,
-    "28": 0.2,
-    "29": 0.2222222222222222,
-    "30": 0.2222222222222222,
+    "22": 0.13333333333333333,
+    "23": 0.14285714285714285,
+    "24": 0.16666666666666666,
+    "25": 0.2,
+    "26": 0.2,
+    "27": 0.2222222222222222,
+    "28": 0.2222222222222222,
+    "29": 0.4722222222222222,
+    "30": 0.25,
     "31": 0.25,
     "32": 0.25,
     "33": 0.25,
     "34": 0.25,
-    "35": 0.25,
+    "35": 0.2857142857142857,
     "36": 0.2857142857142857,
     "37": 0.2857142857142857,
     "38": 0.2857142857142857,
-    "39": 0.2857142857142857,
-    "40": 0.2857142857142857,
-    "41": 0.3333333333333333,
-    "42": 0.3333333333333333,
-    "43": 0.5
+    "39": 0.3333333333333333,
+    "40": 0.5
   },
   "gods": [
     {
       "id": "core_graph_dag_chronodag",
       "label": "ChronoDAG",
-      "degree": 45
+      "degree": 42
     },
     {
       "id": "planning_graphs_graph_report_communities_37_total_0_thin_omitted",
@@ -1047,7 +979,7 @@
     {
       "id": "core_graph_node_statenode",
       "label": "StateNode",
-      "degree": 36
+      "degree": 35
     },
     {
       "id": "core_graph_node_cid",
@@ -1065,8 +997,8 @@
       "degree": 26
     },
     {
-      "id": "adapters_vscode_index_vscodechronoadapter",
-      "label": "VSCodeChronoAdapter",
+      "id": "docs_03_data_model_data_model",
+      "label": "Data Model",
       "degree": 23
     },
     {
@@ -1075,14 +1007,14 @@
       "degree": 23
     },
     {
-      "id": "docs_03_data_model_data_model",
-      "label": "Data Model",
-      "degree": 23
-    },
-    {
       "id": "docs_11_faq_objections_faq_objections",
       "label": "FAQ & Objections",
       "degree": 22
+    },
+    {
+      "id": "store_backends_sqlite_sqlitestorage",
+      "label": "SQLiteStorage",
+      "degree": 21
     }
   ],
   "surprises": [
@@ -1095,51 +1027,51 @@
       ],
       "confidence": "INFERRED",
       "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities; peripheral node `3. The TypeScript Interface Contract` unexpectedly reaches hub `ChronoAdapter`"
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 code); connects across different repos/directories; bridges separate communities; peripheral node `3. The TypeScript Interface Contract` unexpectedly reaches hub `ChronoAdapter`"
+    },
+    {
+      "source": "Surprising Connections (you probably didn't know these)",
+      "target": "ChronoAdapter",
+      "source_files": [
+        ".planning/graphs/GRAPH_REPORT.md",
+        "adapters/sdk/adapter.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 code); connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Surprising Connections (you probably didn't know these)",
+      "target": "VSCodeObserver",
+      "source_files": [
+        ".planning/graphs/GRAPH_REPORT.md",
+        "adapters/vscode/observe.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 code); connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Surprising Connections (you probably didn't know these)",
+      "target": "VectorClock",
+      "source_files": [
+        ".planning/graphs/GRAPH_REPORT.md",
+        "core/clock/logical.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 code); connects across different repos/directories; bridges separate communities"
     },
     {
       "source": "God Nodes (most connected - your core abstractions)",
-      "target": "ChronoDAG",
+      "target": "VSCodeChronoAdapter",
       "source_files": [
         ".planning/graphs/GRAPH_REPORT.md",
-        "core/graph/dag.ts"
+        "adapters/vscode/index.ts"
       ],
       "confidence": "INFERRED",
       "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities"
-    },
-    {
-      "source": "Suggested Questions",
-      "target": "ChronoDAG",
-      "source_files": [
-        ".planning/graphs/GRAPH_REPORT.md",
-        "core/graph/dag.ts"
-      ],
-      "confidence": "INFERRED",
-      "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities"
-    },
-    {
-      "source": "God Nodes (most connected - your core abstractions)",
-      "target": "StateNode",
-      "source_files": [
-        ".planning/graphs/GRAPH_REPORT.md",
-        "core/graph/node.ts"
-      ],
-      "confidence": "INFERRED",
-      "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities"
-    },
-    {
-      "source": "3.2 Overlapping Splices (Conflict)",
-      "target": "SemanticConflict",
-      "source_files": [
-        "spec/MERGE_SEMANTICS.md",
-        "core/merge/conflicts.ts"
-      ],
-      "confidence": "INFERRED",
-      "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities"
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc \u2194 code); connects across different repos/directories; bridges separate communities"
     }
   ],
   "tokens": {

@@ -78,10 +78,10 @@
     "semantic_hash": "a28b868e1b0184ffd6ffc819f1590d7e"
   },
   "package.json": {
-    "mtime": 1791468869.4075167,
-    "seen": 1791469008.5781183,
-    "ast_hash": "184e33979341e7fe2b3b57ed4717e969",
-    "semantic_hash": "184e33979341e7fe2b3b57ed4717e969"
+    "mtime": 1791469843.4354842,
+    "seen": 1791469855.709807,
+    "ast_hash": "c96dc584f435be28f66b5e550086db23",
+    "semantic_hash": "c96dc584f435be28f66b5e550086db23"
   },
   "tests/adapters/vscode.test.ts": {
     "mtime": 1791162687.4252212,
@@ -442,5 +442,29 @@
     "seen": 1791469008.5781183,
     "ast_hash": "7f0134684fb5128258f03117c8649204",
     "semantic_hash": "7f0134684fb5128258f03117c8649204"
+  },
+  "extensions/vscode/package.json": {
+    "mtime": 1791469825.9841049,
+    "seen": 1791469855.709807,
+    "ast_hash": "cdf7ea95804aecea4263b36b84d4b0be",
+    "semantic_hash": "cdf7ea95804aecea4263b36b84d4b0be"
+  },
+  "extensions/vscode/src/extension.ts": {
+    "mtime": 1791469811.1995912,
+    "seen": 1791469855.709807,
+    "ast_hash": "65e15508ec910d0d2791662530fdde39",
+    "semantic_hash": "65e15508ec910d0d2791662530fdde39"
+  },
+  "extensions/vscode/src/types.ts": {
+    "mtime": 1791469797.1784554,
+    "seen": 1791469855.709807,
+    "ast_hash": "11113beb625eec836eda65a3fe3b2c89",
+    "semantic_hash": "11113beb625eec836eda65a3fe3b2c89"
+  },
+  "tests/adapters/vscode-extension.test.ts": {
+    "mtime": 1791469818.726477,
+    "seen": 1791469855.7118144,
+    "ast_hash": "7584b7cb720078559d79ebf5a34c9433",
+    "semantic_hash": "7584b7cb720078559d79ebf5a34c9433"
   }
 }

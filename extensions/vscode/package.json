@@ -1,0 +1,74 @@
+{
+  "name": "chrono-vscode",
+  "displayName": "CHRONO — Time Machine for Code",
+  "description": "Git for living computational state. Continuous background recording, instant time travel, and speculative branching inside VS Code.",
+  "version": "1.0.0",
+  "type": "module",
+  "publisher": "chrono-project",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Source Control",
+    "Keymaps"
+  ],
+  "keywords": [
+    "time-travel",
+    "undo",
+    "git",
+    "scrubber",
+    "history",
+    "timeline"
+  ],
+  "main": "./src/extension.ts",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "chrono.openScrubber",
+        "title": "CHRONO: Open Time Machine Scrubber",
+        "category": "CHRONO",
+        "icon": "$(history)"
+      },
+      {
+        "command": "chrono.rewind",
+        "title": "CHRONO: Rewind to Previous Safe Moment",
+        "category": "CHRONO"
+      },
+      {
+        "command": "chrono.newExperiment",
+        "title": "CHRONO: Fork New Experiment Branch",
+        "category": "CHRONO"
+      },
+      {
+        "command": "chrono.toggleRecording",
+        "title": "CHRONO: Toggle Background Recording",
+        "category": "CHRONO"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "chrono.openScrubber",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t"
+      },
+      {
+        "command": "chrono.rewind",
+        "key": "ctrl+shift+z",
+        "mac": "cmd+shift+z"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "chrono.openScrubber",
+          "group": "navigation",
+          "when": "editorTextFocus"
+        }
+      ]
+    }
+  }
+}

@@ -4,9 +4,9 @@
   "description": "Git for living computational state",
   "type": "module",
   "scripts": {
-    "test": "node --experimental-strip-types --test tests/determinism/determinism.test.ts tests/adapters/vscode.test.ts tests/store/store.test.ts tests/query/cql.test.ts tests/cli/cli.test.ts tests/merge/merge.test.ts",
+    "test": "node --experimental-strip-types --test tests/determinism/determinism.test.ts tests/adapters/vscode.test.ts tests/adapters/vscode-extension.test.ts tests/store/store.test.ts tests/query/cql.test.ts tests/cli/cli.test.ts tests/merge/merge.test.ts",
     "test:determinism": "node --experimental-strip-types --test tests/determinism/determinism.test.ts",
-    "test:adapters": "node --experimental-strip-types --test tests/adapters/vscode.test.ts",
+    "test:adapters": "node --experimental-strip-types --test tests/adapters/vscode.test.ts tests/adapters/vscode-extension.test.ts",
     "test:store": "node --experimental-strip-types --test tests/store/store.test.ts",
     "test:query": "node --experimental-strip-types --test tests/query/cql.test.ts",
     "test:cli": "node --experimental-strip-types --test tests/cli/cli.test.ts",
