@@ -34,9 +34,9 @@
     "commands": [
       {
         "command": "chrono.openMenu",
-        "title": "CHRONO: Control Center (All Features)",
+        "title": "CHRONO (Click to Rewind, Branch, or Merge)",
         "category": "CHRONO",
-        "icon": "$(history)"
+        "icon": "./media/chrono-c.svg"
       },
       {
         "command": "chrono.rewind",
@@ -83,13 +83,8 @@
     "menus": {
       "editor/title": [
         {
-          "command": "chrono.rewind",
-          "group": "navigation@1",
-          "when": "editorTextFocus"
-        },
-        {
           "command": "chrono.openMenu",
-          "group": "navigation@2",
+          "group": "navigation@1",
           "when": "editorTextFocus"
         }
       ]
