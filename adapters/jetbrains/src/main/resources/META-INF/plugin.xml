@@ -1,0 +1,36 @@
+<idea-plugin>
+  <id>com.chrono.jetbrains</id>
+  <name>CHRONO — Time Machine for Code</name>
+  <version>1.0.0</version>
+  <vendor email="team@chrono.dev" url="https://chrono.dev">Chrono Working Group</vendor>
+
+  <description><![CDATA[
+    <b>Git for living computational state.</b><br/>
+    Continuous background recording, instant one-click time travel, and speculative branching
+    directly inside IntelliJ IDEA, PyCharm, WebStorm, Android Studio, CLion, and GoLand.
+  ]]></description>
+
+  <depends>com.intellij.modules.platform</depends>
+
+  <actions>
+    <!-- Group on Main Toolbar & Editor Navigation -->
+    <group id="ChronoActionGroup" text="CHRONO" popup="true" icon="AllIcons.Actions.Undo">
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+      <add-to-group group-id="MainToolBar" anchor="last"/>
+      
+      <action id="Chrono.Rewind" class="com.chrono.actions.RewindAction" text="Rewind to Safe State" description="Instant in-place rollback (0.024ms)">
+        <keyboard-shortcut first-keystroke="control alt Z" keymap="$default"/>
+      </action>
+
+      <action id="Chrono.ForkBranch" class="com.chrono.actions.ForkBranchAction" text="Fork New Experiment Branch" description="Create an isolated sandbox branch">
+        <keyboard-shortcut first-keystroke="control alt B" keymap="$default"/>
+      </action>
+
+      <action id="Chrono.Merge" class="com.chrono.actions.MergeAction" text="3-Way Semantic Auto-Merge" description="Reconcile experiment cleanly into main">
+        <keyboard-shortcut first-keystroke="control alt M" keymap="$default"/>
+      </action>
+
+      <action id="Chrono.Search" class="com.chrono.actions.SearchAction" text="Search State History" description="Search past work, tests, and edits"/>
+    </group>
+  </actions>
+</idea-plugin>
