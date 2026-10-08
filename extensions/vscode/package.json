@@ -33,8 +33,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "chrono.openScrubber",
-        "title": "CHRONO: Open Time Machine Scrubber",
+        "command": "chrono.openMenu",
+        "title": "CHRONO: Control Center (All Features)",
         "category": "CHRONO",
         "icon": "$(history)"
       },
@@ -51,12 +51,29 @@
         "icon": "$(git-branch)"
       },
       {
+        "command": "chrono.merge",
+        "title": "CHRONO: 3-Way Semantic Merge",
+        "category": "CHRONO",
+        "icon": "$(git-merge)"
+      },
+      {
+        "command": "chrono.query",
+        "title": "CHRONO: Search Past Work (CQL / Natural)",
+        "category": "CHRONO",
+        "icon": "$(search)"
+      },
+      {
         "command": "chrono.toggleRecording",
         "title": "CHRONO: Toggle Background Recording",
         "category": "CHRONO"
       }
     ],
     "keybindings": [
+      {
+        "command": "chrono.openMenu",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t"
+      },
       {
         "command": "chrono.rewind",
         "key": "ctrl+shift+z",
@@ -68,6 +85,11 @@
         {
           "command": "chrono.rewind",
           "group": "navigation@1",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "chrono.openMenu",
+          "group": "navigation@2",
           "when": "editorTextFocus"
         }
       ]

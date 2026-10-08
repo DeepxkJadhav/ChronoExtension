@@ -230,6 +230,14 @@ export class ChronoDAG {
     return path.map((c) => this.getNode(c)!);
   }
 
+  public get size(): number {
+    return this.nodes.size;
+  }
+
+  public isAncestor(ancestorCid: CID, targetCid: CID): boolean {
+    return this.getAncestors(targetCid).has(ancestorCid);
+  }
+
   public getStats(): DAGStats {
     let edgeCount = 0;
     for (const parents of this.parentsMap.values()) {

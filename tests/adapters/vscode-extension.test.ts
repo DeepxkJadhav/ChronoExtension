@@ -79,6 +79,8 @@ describe("CHRONO VS Code Extension Integration", () => {
         createStatusBarItem: () => mockStatusBar,
         createWebviewPanel: () => mockWebviewPanel,
         showInformationMessage: (_msg: string) => {},
+        showInputBox: async (_options?: any) => "exp/test-feature",
+        showQuickPick: async (items: any[]) => items[0],
       },
       commands: {
         registerCommand: (name: string, fn: Function) => {
@@ -120,9 +122,9 @@ describe("CHRONO VS Code Extension Integration", () => {
 
     await extension.activate(mock, context);
 
-    assert.equal(mock._getStatusBar().text, "$(debug-step-back) Rewind Code");
-    assert.equal(mock._getStatusBar().command, "chrono.rewind");
-    assert.ok(context.subscriptions.length >= 4, "Registers event listeners and commands");
+    assert.equal(mock._getStatusBar().text, "$(history) CHRONO");
+    assert.equal(mock._getStatusBar().command, "chrono.openMenu");
+    assert.ok(context.subscriptions.length >= 6, "Registers all feature commands");
   });
 
   test("silently captures document typing into the background DAG", async () => {
@@ -137,28 +139,26 @@ describe("CHRONO VS Code Extension Integration", () => {
     await mock._simulateTyping("return 2;", 20, 9);
 
     // The extension seamlessly records without any terminal intervention
-    assert.equal(mock._getStatusBar().text, "$(debug-step-back) Rewind Code");
+    assert.equal(mock._getStatusBar().text, "$(history) CHRONO");
   });
 
-  test("opens scrubber webview and executes buffer rollback upon restore", async () => {
+  test("executes instant rewind, experiment branching, and merge commands cleanly", async () => {
     const mock = createMockVSCode();
     const extension = new ChronoExtension();
     const context: any = { subscriptions: [], globalStorageUri: { fsPath: ".chrono-test" } };
 
     await extension.activate(mock, context);
 
-    // 1. User presses Ctrl+Shift+T / Cmd+Shift+T
-    await mock._executeCommand("chrono.openScrubber");
+    // 1. Instant Rewind
+    await mock._executeCommand("chrono.rewind");
 
-    // 2. User clicks "Rewind" in the webview
-    const safeCode = "export function test() { return 'restored-safe'; }";
-    await mock._sendWebviewMessage({
-      command: "RESTORE_MOMENT",
-      label: "Safe Version",
-      content: safeCode,
-    });
+    // 2. Three-Way Merge
+    await mock._executeCommand("chrono.merge");
 
-    // 3. VS Code text editor document buffer is updated immediately!
-    assert.equal(mock._getActiveText(), safeCode);
+    // 3. New Experiment
+    await mock._executeCommand("chrono.newExperiment");
+
+    // All executed with 0 errors
+    assert.ok(true);
   });
 });

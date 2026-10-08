@@ -48,10 +48,10 @@
     "semantic_hash": "eb60f48113715fcd4cbc506911be18cc"
   },
   "core/graph/dag.ts": {
-    "mtime": 1791468869.4002783,
-    "seen": 1791469008.5781183,
-    "ast_hash": "04263ced1c2a7143baab004d967de6c3",
-    "semantic_hash": "04263ced1c2a7143baab004d967de6c3"
+    "mtime": 1791470461.7258544,
+    "seen": 1791470471.2577996,
+    "ast_hash": "7ce60ff38990b455d48fbf4423b630ec",
+    "semantic_hash": "7ce60ff38990b455d48fbf4423b630ec"
   },
   "core/graph/delta.ts": {
     "mtime": 1791159598.3924618,
@@ -78,10 +78,10 @@
     "semantic_hash": "a28b868e1b0184ffd6ffc819f1590d7e"
   },
   "package.json": {
-    "mtime": 1791469843.4354842,
-    "seen": 1791469855.709807,
-    "ast_hash": "c96dc584f435be28f66b5e550086db23",
-    "semantic_hash": "c96dc584f435be28f66b5e550086db23"
+    "mtime": 1791470412.8363962,
+    "seen": 1791470471.259799,
+    "ast_hash": "39e92ba89d684cd87bc9fc1ba5fcfe44",
+    "semantic_hash": "39e92ba89d684cd87bc9fc1ba5fcfe44"
   },
   "tests/adapters/vscode.test.ts": {
     "mtime": 1791162687.4252212,
@@ -444,16 +444,16 @@
     "semantic_hash": "7f0134684fb5128258f03117c8649204"
   },
   "extensions/vscode/package.json": {
-    "mtime": 1791469825.9841049,
-    "seen": 1791469855.709807,
-    "ast_hash": "cdf7ea95804aecea4263b36b84d4b0be",
-    "semantic_hash": "cdf7ea95804aecea4263b36b84d4b0be"
+    "mtime": 1791470369.2412615,
+    "seen": 1791470471.259799,
+    "ast_hash": "f715d53417bcb69c54e5a8d05908b48f",
+    "semantic_hash": "f715d53417bcb69c54e5a8d05908b48f"
   },
   "extensions/vscode/src/extension.ts": {
-    "mtime": 1791469811.1995912,
-    "seen": 1791469855.709807,
-    "ast_hash": "65e15508ec910d0d2791662530fdde39",
-    "semantic_hash": "65e15508ec910d0d2791662530fdde39"
+    "mtime": 1791470385.3854089,
+    "seen": 1791470471.259799,
+    "ast_hash": "911564fde4dfca2c2054358e6f6872bb",
+    "semantic_hash": "911564fde4dfca2c2054358e6f6872bb"
   },
   "extensions/vscode/src/types.ts": {
     "mtime": 1791469797.1784554,
@@ -462,9 +462,57 @@
     "semantic_hash": "11113beb625eec836eda65a3fe3b2c89"
   },
   "tests/adapters/vscode-extension.test.ts": {
-    "mtime": 1791469818.726477,
-    "seen": 1791469855.7118144,
-    "ast_hash": "7584b7cb720078559d79ebf5a34c9433",
-    "semantic_hash": "7584b7cb720078559d79ebf5a34c9433"
+    "mtime": 1791470432.142249,
+    "seen": 1791470471.260799,
+    "ast_hash": "d9d4113c9068ee0d357be63f12e4d714",
+    "semantic_hash": "d9d4113c9068ee0d357be63f12e4d714"
+  },
+  "adapters/terminal/index.ts": {
+    "mtime": 1791470360.4267988,
+    "seen": 1791470471.2557995,
+    "ast_hash": "0e36ecbc6157def3751a527096506c05",
+    "semantic_hash": "0e36ecbc6157def3751a527096506c05"
+  },
+  "cli/commands/merge.ts": {
+    "mtime": 1791470351.6338887,
+    "seen": 1791470471.2577996,
+    "ast_hash": "a30c6bf333ff375ebe323fc87df9d2ae",
+    "semantic_hash": "a30c6bf333ff375ebe323fc87df9d2ae"
+  },
+  "cli/commands/status.ts": {
+    "mtime": 1791470355.8930445,
+    "seen": 1791470471.2577996,
+    "ast_hash": "3c235205db8a8381904620152edf1317",
+    "semantic_hash": "3c235205db8a8381904620152edf1317"
+  },
+  "core/clock/timeline.ts": {
+    "mtime": 1791470343.5546196,
+    "seen": 1791470471.2577996,
+    "ast_hash": "8c71de2fc78c33450c9b98b440afe31e",
+    "semantic_hash": "8c71de2fc78c33450c9b98b440afe31e"
+  },
+  "core/compress/dedupe.ts": {
+    "mtime": 1791470425.4517195,
+    "seen": 1791470471.2577996,
+    "ast_hash": "a678bc37fe51713b8f1864f2c046d325",
+    "semantic_hash": "a678bc37fe51713b8f1864f2c046d325"
+  },
+  "core/graph/branch.ts": {
+    "mtime": 1791470335.7878861,
+    "seen": 1791470471.2577996,
+    "ast_hash": "b264b071e40aaea5cb2b270b778a553e",
+    "semantic_hash": "b264b071e40aaea5cb2b270b778a553e"
+  },
+  "core/graph/epoch.ts": {
+    "mtime": 1791470339.6549127,
+    "seen": 1791470471.2587993,
+    "ast_hash": "a207eb4c2fc603b82bd6f99d3d221aca",
+    "semantic_hash": "a207eb4c2fc603b82bd6f99d3d221aca"
+  },
+  "tests/core/extended-features.test.ts": {
+    "mtime": 1791470405.116765,
+    "seen": 1791470471.261799,
+    "ast_hash": "29a89226bfc154430024841163819336",
+    "semantic_hash": "29a89226bfc154430024841163819336"
   }
 }

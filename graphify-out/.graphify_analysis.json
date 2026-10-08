@@ -1,111 +1,6 @@
 {
   "communities": {
     "0": [
-      "cli_commands_branch",
-      "cli_commands_branch_branchcommand",
-      "cli_commands_branch_branchoptions",
-      "cli_commands_init",
-      "cli_commands_init_initcommand",
-      "cli_commands_init_initoptions",
-      "cli_commands_log",
-      "cli_commands_log_logcommand",
-      "cli_commands_log_logoptions",
-      "cli_commands_query",
-      "cli_commands_query_querycommand",
-      "cli_commands_query_queryoptions",
-      "cli_commands_replay",
-      "cli_commands_replay_replaycommand",
-      "cli_commands_replay_replayoptions",
-      "cli_main",
-      "cli_main_runcli",
-      "core_clock_logical",
-      "core_clock_logical_causalityrelation",
-      "core_clock_logical_vectorclocksnapshot",
-      "core_graph_dag",
-      "core_graph_dag_chronodag",
-      "core_graph_dag_chronodag_addnode",
-      "core_graph_dag_chronodag_constructor",
-      "core_graph_dag_chronodag_findlowestcommonancestor",
-      "core_graph_dag_chronodag_getancestors",
-      "core_graph_dag_chronodag_getchildren",
-      "core_graph_dag_chronodag_getheads",
-      "core_graph_dag_chronodag_getlineage",
-      "core_graph_dag_chronodag_getnode",
-      "core_graph_dag_chronodag_getparents",
-      "core_graph_dag_chronodag_getroots",
-      "core_graph_dag_chronodag_getstats",
-      "core_graph_dag_chronodag_hasnode",
-      "core_graph_delta_applytextsplice",
-      "core_graph_node",
-      "core_graph_node_canonicalizejson",
-      "core_graph_node_cid",
-      "core_graph_node_computenodecid",
-      "core_graph_node_nodeadapterinfo",
-      "core_graph_node_nodeannotations",
-      "core_graph_node_nodekind",
-      "core_graph_node_statenode",
-      "core_graph_node_statenode_create",
-      "core_graph_node_statenode_fromverified",
-      "core_graph_node_statenode_tojson",
-      "core_graph_node_statenodedata",
-      "core_merge_conflicts",
-      "core_merge_conflicts_conflictkind",
-      "core_merge_conflicts_mergereport",
-      "core_merge_conflicts_semanticconflict",
-      "core_merge_strategies",
-      "core_merge_strategies_semanticmergeengine",
-      "core_merge_strategies_semanticmergeengine_constructor",
-      "core_merge_strategies_semanticmergeengine_merge",
-      "core_merge_strategies_semanticmergeengine_trymergetext",
-      "core_replay_determinism",
-      "core_replay_determinism_determinismauditor",
-      "core_replay_determinism_determinismauditor_auditnode",
-      "core_replay_determinism_determinismauditor_constructor",
-      "core_replay_determinism_determinismcheckreport",
-      "core_replay_determinism_digestdomainstate",
-      "core_replay_replayer",
-      "core_replay_replayer_deterministicreplayer",
-      "core_replay_replayer_deterministicreplayer_applynodedelta",
-      "core_replay_replayer_deterministicreplayer_constructor",
-      "core_replay_replayer_deterministicreplayer_findnearestsnapshotancestor",
-      "core_replay_replayer_deterministicreplayer_hydratebasestate",
-      "core_replay_replayer_deterministicreplayer_reconstruct",
-      "core_replay_replayer_reconstructeddomainstate",
-      "core_replay_replayer_replayresult",
-      "demo_run_demo",
-      "demo_run_demo_banner",
-      "demo_run_demo_delay",
-      "demo_run_demo_runlivedemo",
-      "planning_graphs_graph_report_surprising_connections_you_probably_didn_t_know_these",
-      "query_cql_evaluator_queryexecutioncontext",
-      "ref_crypto",
-      "ref_node_assert",
-      "ref_node_fs",
-      "ref_node_os",
-      "ref_node_path",
-      "ref_node_sqlite",
-      "ref_node_test",
-      "store_backends_sqlite",
-      "store_backends_sqlite_branchinfo",
-      "store_backends_sqlite_sqlitestorage",
-      "store_backends_sqlite_sqlitestorage_close",
-      "store_backends_sqlite_sqlitestorage_constructor",
-      "store_backends_sqlite_sqlitestorage_getbranchhead",
-      "store_backends_sqlite_sqlitestorage_getnode",
-      "store_backends_sqlite_sqlitestorage_initschema",
-      "store_backends_sqlite_sqlitestorage_listbranches",
-      "store_backends_sqlite_sqlitestorage_loadintodag",
-      "store_backends_sqlite_sqlitestorage_savenode",
-      "store_backends_sqlite_sqlitestorage_setbranchhead",
-      "tests_adapters_vscode_extension_test",
-      "tests_adapters_vscode_extension_test_createmockvscode",
-      "tests_cli_cli_test",
-      "tests_determinism_determinism_test",
-      "tests_merge_merge_test",
-      "tests_query_cql_test",
-      "tests_store_store_test"
-    ],
-    "1": [
       "adapters_sdk_adapter",
       "adapters_sdk_adapter_adaptercontext",
       "adapters_sdk_adapter_chronoadapter",
@@ -130,6 +25,10 @@
       "adapters_sdk_capability_canrestoredomain",
       "adapters_sdk_capability_createcapabilityprofile",
       "adapters_sdk_capability_negotiatecapabilities",
+      "adapters_terminal_index",
+      "adapters_terminal_index_terminaladapter",
+      "adapters_terminal_index_terminaladapter_captureexecution",
+      "adapters_terminal_index_terminalexecution",
       "adapters_vscode_index",
       "adapters_vscode_index_vscodechronoadapter",
       "adapters_vscode_index_vscodechronoadapter_bindeditorhooks",
@@ -164,14 +63,18 @@
       "adapters_vscode_snapshot_tostring",
       "adapters_vscode_snapshot_vscodesnapshotter",
       "adapters_vscode_snapshot_vscodesnapshotter_capturesnapshot",
+      "extensions_vscode_src_extension_chronoextension_constructor",
+      "ref_node_assert",
+      "ref_node_test",
+      "tests_adapters_vscode_extension_test",
+      "tests_adapters_vscode_extension_test_createmockvscode",
       "tests_adapters_vscode_test"
     ],
-    "2": [
+    "1": [
       "query_cql_ast",
       "query_cql_ast_astnode",
       "query_cql_ast_astnodetype",
       "query_cql_ast_binaryexpr",
-      "query_cql_ast_cqlquery",
       "query_cql_ast_expression",
       "query_cql_ast_functioncallexpr",
       "query_cql_ast_graphsource",
@@ -181,18 +84,19 @@
       "query_cql_ast_pathexpr",
       "query_cql_ast_projectionitem",
       "query_cql_ast_unaryexpr",
-      "query_cql_evaluator",
-      "query_cql_evaluator_evaluator",
-      "query_cql_evaluator_evaluator_constructor",
-      "query_cql_evaluator_evaluator_evaluateexpression",
-      "query_cql_evaluator_evaluator_evaluatefunction",
-      "query_cql_evaluator_evaluator_execute",
-      "query_cql_evaluator_evaluator_projectrow",
-      "query_cql_evaluator_evaluator_resolvepath",
-      "query_cql_evaluator_evaluator_resolvesourcenodes",
-      "query_cql_evaluator_evaluator_walklineagefrom",
-      "query_cql_evaluator_queryresultrow",
       "query_cql_lexer",
+      "query_cql_lexer_lexer",
+      "query_cql_lexer_lexer_advance",
+      "query_cql_lexer_lexer_constructor",
+      "query_cql_lexer_lexer_isalpha",
+      "query_cql_lexer_lexer_isalphanumeric",
+      "query_cql_lexer_lexer_isdigit",
+      "query_cql_lexer_lexer_readidentifier",
+      "query_cql_lexer_lexer_readnumber",
+      "query_cql_lexer_lexer_readstring",
+      "query_cql_lexer_lexer_skipcomment",
+      "query_cql_lexer_lexer_skipwhitespace",
+      "query_cql_lexer_lexer_tokenize",
       "query_cql_parser",
       "query_cql_parser_parser",
       "query_cql_parser_parser_advance",
@@ -201,6 +105,7 @@
       "query_cql_parser_parser_consume",
       "query_cql_parser_parser_isatend",
       "query_cql_parser_parser_match",
+      "query_cql_parser_parser_parse",
       "query_cql_parser_parser_parseequality",
       "query_cql_parser_parser_parseexpression",
       "query_cql_parser_parser_parsefunctioncall",
@@ -218,6 +123,51 @@
       "query_cql_tokens",
       "query_cql_tokens_token",
       "query_cql_tokens_tokentype"
+    ],
+    "2": [
+      "cli_commands_branch",
+      "cli_commands_branch_branchcommand",
+      "cli_commands_branch_branchoptions",
+      "cli_commands_init",
+      "cli_commands_init_initcommand",
+      "cli_commands_init_initoptions",
+      "cli_commands_log",
+      "cli_commands_log_logcommand",
+      "cli_commands_log_logoptions",
+      "cli_commands_query",
+      "cli_commands_query_querycommand",
+      "cli_commands_query_queryoptions",
+      "cli_commands_replay",
+      "cli_commands_replay_replaycommand",
+      "cli_commands_replay_replayoptions",
+      "cli_main",
+      "cli_main_runcli",
+      "core_graph_node_nodekind",
+      "demo_serve",
+      "demo_serve_dirname",
+      "demo_serve_html_file",
+      "demo_serve_server",
+      "ref_node_buffer",
+      "ref_node_fs",
+      "ref_node_http",
+      "ref_node_os",
+      "ref_node_path",
+      "ref_node_sqlite",
+      "ref_node_url",
+      "store_backends_sqlite",
+      "store_backends_sqlite_branchinfo",
+      "store_backends_sqlite_sqlitestorage",
+      "store_backends_sqlite_sqlitestorage_close",
+      "store_backends_sqlite_sqlitestorage_constructor",
+      "store_backends_sqlite_sqlitestorage_getbranchhead",
+      "store_backends_sqlite_sqlitestorage_initschema",
+      "store_backends_sqlite_sqlitestorage_listbranches",
+      "store_backends_sqlite_sqlitestorage_savenode",
+      "store_backends_sqlite_sqlitestorage_setbranchhead",
+      "store_wal_write_ahead",
+      "store_wal_write_ahead_walrecord",
+      "tests_cli_cli_test",
+      "tests_store_store_test"
     ],
     "3": [
       "docs_07_testing",
@@ -251,10 +201,7 @@
       "docs_07_testing_the_red_line",
       "docs_07_testing_vector_clocks",
       "docs_07_testing_visual_tests",
-      "ref_node_buffer",
-      "store_wal_write_ahead",
       "store_wal_write_ahead_calculatechecksum",
-      "store_wal_write_ahead_walrecord",
       "store_wal_write_ahead_writeaheadlog",
       "store_wal_write_ahead_writeaheadlog_append",
       "store_wal_write_ahead_writeaheadlog_close",
@@ -271,7 +218,6 @@
       "extensions_vscode_src_extension_chronoextension_activate",
       "extensions_vscode_src_extension_chronoextension_applybufferedit",
       "extensions_vscode_src_extension_chronoextension_capturegenesissnapshot",
-      "extensions_vscode_src_extension_chronoextension_constructor",
       "extensions_vscode_src_extension_chronoextension_deactivate",
       "extensions_vscode_src_extension_chronoextension_getscrubberhtml",
       "extensions_vscode_src_extension_chronoextension_ondocumentchange",
@@ -380,6 +326,37 @@
       "docs_03_data_model_wall_time_idx"
     ],
     "7": [
+      "core_graph_delta",
+      "core_graph_delta_applytextsplice",
+      "core_graph_delta_deltapayload",
+      "core_graph_delta_filemutationoperation",
+      "core_graph_delta_inverttextsplice",
+      "core_graph_delta_semanticdelta",
+      "core_graph_delta_terminalexecoperation",
+      "core_graph_delta_textspliceoperation",
+      "core_graph_node_canonicalizejson",
+      "core_graph_node_computenodecid",
+      "core_graph_node_statenode_create",
+      "core_replay_determinism",
+      "core_replay_determinism_determinismauditor",
+      "core_replay_determinism_determinismauditor_auditnode",
+      "core_replay_determinism_determinismauditor_constructor",
+      "core_replay_determinism_determinismcheckreport",
+      "core_replay_determinism_digestdomainstate",
+      "core_replay_replayer",
+      "core_replay_replayer_deterministicreplayer",
+      "core_replay_replayer_deterministicreplayer_applynodedelta",
+      "core_replay_replayer_reconstructeddomainstate",
+      "core_replay_replayer_replayresult",
+      "demo_run_demo",
+      "demo_run_demo_banner",
+      "demo_run_demo_delay",
+      "demo_run_demo_runlivedemo",
+      "planning_graphs_graph_report_surprising_connections_you_probably_didn_t_know_these",
+      "ref_crypto",
+      "tests_determinism_determinism_test"
+    ],
+    "8": [
       "docs_12_glossary",
       "docs_12_glossary_a",
       "docs_12_glossary_b",
@@ -410,7 +387,7 @@
       "docs_12_glossary_y",
       "docs_12_glossary_z"
     ],
-    "8": [
+    "9": [
       "adapters_sdk_capability_domaincapability",
       "adapters_sdk_capability_statedomain",
       "core_clock_logical_actorid",
@@ -440,7 +417,36 @@
       "planning_graphs_graph_report_suggested_questions",
       "planning_graphs_graph_report_summary"
     ],
-    "9": [
+    "10": [
+      "core_graph_dag_chronodag",
+      "core_graph_dag_chronodag_addnode",
+      "core_graph_dag_chronodag_constructor",
+      "core_graph_dag_chronodag_findlowestcommonancestor",
+      "core_graph_dag_chronodag_getancestors",
+      "core_graph_dag_chronodag_getchildren",
+      "core_graph_dag_chronodag_getheads",
+      "core_graph_dag_chronodag_getlineage",
+      "core_graph_dag_chronodag_getnode",
+      "core_graph_dag_chronodag_getparents",
+      "core_graph_dag_chronodag_getroots",
+      "core_graph_dag_chronodag_getstats",
+      "core_graph_dag_chronodag_hasnode",
+      "core_graph_dag_chronodag_isancestor",
+      "core_graph_dag_chronodag_size",
+      "core_graph_epoch_epochmanager",
+      "core_graph_epoch_epochmanager_constructor",
+      "core_graph_epoch_epochmanager_findnearestcheckpoint",
+      "core_graph_epoch_epochmanager_listcheckpoints",
+      "core_graph_epoch_epochmanager_registercheckpoint",
+      "core_graph_node_cid",
+      "core_replay_replayer_deterministicreplayer_constructor",
+      "core_replay_replayer_deterministicreplayer_findnearestsnapshotancestor",
+      "core_replay_replayer_deterministicreplayer_hydratebasestate",
+      "core_replay_replayer_deterministicreplayer_reconstruct",
+      "query_cql_evaluator_queryexecutioncontext",
+      "store_backends_sqlite_sqlitestorage_loadintodag"
+    ],
+    "11": [
       "docs_10_launch_growth",
       "docs_10_launch_growth_anti_growth_tactics",
       "docs_10_launch_growth_blog_posts_monthly",
@@ -469,7 +475,7 @@
       "docs_10_launch_growth_where",
       "docs_10_launch_growth_who"
     ],
-    "10": [
+    "12": [
       "docs_02_architecture",
       "docs_02_architecture_adapters",
       "docs_02_architecture_ai_orchestrator",
@@ -497,7 +503,7 @@
       "docs_02_architecture_the_three_invariants",
       "docs_02_architecture_what_not_to_couple"
     ],
-    "11": [
+    "13": [
       "docs_05_build_plan",
       "docs_05_build_plan_anti_patterns_do_not",
       "docs_05_build_plan_beyond_phase_4_years_3_10",
@@ -525,7 +531,7 @@
       "docs_05_build_plan_the_rule",
       "docs_05_build_plan_weekly_cadence_every_week"
     ],
-    "12": [
+    "14": [
       "docs_04_tech_stack",
       "docs_04_tech_stack_ai_providers_optional",
       "docs_04_tech_stack_analytics_telemetry",
@@ -551,7 +557,7 @@
       "docs_04_tech_stack_ui_framework",
       "docs_04_tech_stack_what_to_reject"
     ],
-    "13": [
+    "15": [
       "docs_09_security_privacy",
       "docs_09_security_privacy_access_control",
       "docs_09_security_privacy_adapter_sandboxing",
@@ -577,7 +583,7 @@
       "docs_09_security_privacy_the_rule",
       "docs_09_security_privacy_threat_model"
     ],
-    "14": [
+    "16": [
       "docs_11_faq_objections",
       "docs_11_faq_objections_faq_objections",
       "docs_11_faq_objections_how_is_this_different_from_rewind_ai",
@@ -602,7 +608,31 @@
       "docs_11_faq_objections_won_t_this_slow_down_my_computer",
       "docs_11_faq_objections_won_t_this_use_enormous_disk_space"
     ],
-    "15": [
+    "17": [
+      "extensions_vscode_package",
+      "extensions_vscode_package_activationevents",
+      "extensions_vscode_package_categories",
+      "extensions_vscode_package_contributes",
+      "extensions_vscode_package_contributes_commands",
+      "extensions_vscode_package_contributes_keybindings",
+      "extensions_vscode_package_contributes_menus",
+      "extensions_vscode_package_description",
+      "extensions_vscode_package_displayname",
+      "extensions_vscode_package_engines",
+      "extensions_vscode_package_engines_vscode",
+      "extensions_vscode_package_keywords",
+      "extensions_vscode_package_license",
+      "extensions_vscode_package_main",
+      "extensions_vscode_package_menus_editor_title",
+      "extensions_vscode_package_name",
+      "extensions_vscode_package_publisher",
+      "extensions_vscode_package_repository",
+      "extensions_vscode_package_repository_type",
+      "extensions_vscode_package_repository_url",
+      "extensions_vscode_package_type",
+      "extensions_vscode_package_version"
+    ],
+    "18": [
       "spec_protocol",
       "spec_protocol_1_protocol_architecture",
       "spec_protocol_2_1_transport_layer",
@@ -624,7 +654,7 @@
       "spec_protocol_response_169",
       "spec_protocol_response_198"
     ],
-    "16": [
+    "19": [
       "docs_06_daily_workflow",
       "docs_06_daily_workflow_branches",
       "docs_06_daily_workflow_commits",
@@ -645,7 +675,7 @@
       "docs_06_daily_workflow_tools",
       "docs_06_daily_workflow_weekly_review_friday_1h"
     ],
-    "17": [
+    "20": [
       "docs_08_ui_ux_spec",
       "docs_08_ui_ux_spec_accessibility",
       "docs_08_ui_ux_spec_colors",
@@ -666,7 +696,7 @@
       "docs_08_ui_ux_spec_ui_ux_specification",
       "docs_08_ui_ux_spec_visual_language"
     ],
-    "18": [
+    "21": [
       "docs_01_product_spec",
       "docs_01_product_spec_core_features_phase_1_phase_4",
       "docs_01_product_spec_phase_1_foundation_months_1_3",
@@ -686,27 +716,26 @@
       "docs_01_product_spec_the_product",
       "docs_01_product_spec_what_chrono_is_not"
     ],
-    "19": [
-      "extensions_vscode_package",
-      "extensions_vscode_package_activationevents",
-      "extensions_vscode_package_categories",
-      "extensions_vscode_package_contributes",
-      "extensions_vscode_package_contributes_commands",
-      "extensions_vscode_package_contributes_keybindings",
-      "extensions_vscode_package_contributes_menus",
-      "extensions_vscode_package_description",
-      "extensions_vscode_package_displayname",
-      "extensions_vscode_package_engines",
-      "extensions_vscode_package_engines_vscode",
-      "extensions_vscode_package_keywords",
-      "extensions_vscode_package_main",
-      "extensions_vscode_package_menus_editor_title",
-      "extensions_vscode_package_name",
-      "extensions_vscode_package_publisher",
-      "extensions_vscode_package_type",
-      "extensions_vscode_package_version"
+    "22": [
+      "core_graph_node_statenode",
+      "core_graph_node_statenode_fromverified",
+      "core_graph_node_statenode_tojson",
+      "query_cql_ast_cqlquery",
+      "query_cql_evaluator",
+      "query_cql_evaluator_evaluator",
+      "query_cql_evaluator_evaluator_constructor",
+      "query_cql_evaluator_evaluator_evaluateexpression",
+      "query_cql_evaluator_evaluator_evaluatefunction",
+      "query_cql_evaluator_evaluator_execute",
+      "query_cql_evaluator_evaluator_projectrow",
+      "query_cql_evaluator_evaluator_resolvepath",
+      "query_cql_evaluator_evaluator_resolvesourcenodes",
+      "query_cql_evaluator_evaluator_walklineagefrom",
+      "query_cql_evaluator_queryresultrow",
+      "store_backends_sqlite_sqlitestorage_getnode",
+      "tests_query_cql_test"
     ],
-    "20": [
+    "23": [
       "glossary",
       "glossary_adapter_adapter",
       "glossary_branch_branch",
@@ -725,7 +754,7 @@
       "glossary_state_node_node",
       "glossary_write_ahead_log_wal"
     ],
-    "21": [
+    "24": [
       "package",
       "package_author",
       "package_description",
@@ -737,13 +766,32 @@
       "package_scripts_test_adapters",
       "package_scripts_test_cli",
       "package_scripts_test_determinism",
+      "package_scripts_test_features",
       "package_scripts_test_merge",
       "package_scripts_test_query",
       "package_scripts_test_store",
       "package_type",
       "package_version"
     ],
-    "22": [
+    "25": [
+      "cli_commands_status",
+      "cli_commands_status_executestatus",
+      "cli_commands_status_statusreport",
+      "core_clock_logical",
+      "core_clock_logical_causalityrelation",
+      "core_clock_logical_vectorclocksnapshot",
+      "core_graph_branch",
+      "core_graph_branch_branchref",
+      "core_graph_dag",
+      "core_graph_epoch",
+      "core_graph_epoch_epochcheckpoint",
+      "core_graph_node",
+      "core_graph_node_nodeadapterinfo",
+      "core_graph_node_nodeannotations",
+      "core_graph_node_statenodedata",
+      "tests_core_extended_features_test"
+    ],
+    "26": [
       "spec_merge_semantics",
       "spec_merge_semantics_1_the_core_problem",
       "spec_merge_semantics_2_merge_algorithm_pipeline",
@@ -761,7 +809,7 @@
       "spec_merge_semantics_step_2_lineage_delta_extraction",
       "spec_merge_semantics_step_3_domain_partitioning_conflict_classification"
     ],
-    "23": [
+    "27": [
       "spec_state_model",
       "spec_state_model_1_mathematical_formalism",
       "spec_state_model_2_1_node_schema_json_schema_typescript",
@@ -778,7 +826,7 @@
       "spec_state_model_5_causal_ordering_vector_clocks",
       "spec_state_model_chrono_specification_state_model"
     ],
-    "24": [
+    "28": [
       "roadmap",
       "roadmap_chrono_roadmap",
       "roadmap_definition_of_done_dod",
@@ -794,22 +842,22 @@
       "roadmap_phase_3_semantic_3_way_merge_visual_scrubber",
       "roadmap_phase_4_semantic_ai_acceleration_p2p_replication"
     ],
-    "25": [
-      "query_cql_lexer_lexer",
-      "query_cql_lexer_lexer_advance",
-      "query_cql_lexer_lexer_constructor",
-      "query_cql_lexer_lexer_isalpha",
-      "query_cql_lexer_lexer_isalphanumeric",
-      "query_cql_lexer_lexer_isdigit",
-      "query_cql_lexer_lexer_readidentifier",
-      "query_cql_lexer_lexer_readnumber",
-      "query_cql_lexer_lexer_readstring",
-      "query_cql_lexer_lexer_skipcomment",
-      "query_cql_lexer_lexer_skipwhitespace",
-      "query_cql_lexer_lexer_tokenize",
-      "query_cql_parser_parser_parse"
+    "29": [
+      "cli_commands_merge",
+      "cli_commands_merge_executemerge",
+      "cli_commands_merge_mergecommandoptions",
+      "core_merge_conflicts",
+      "core_merge_conflicts_conflictkind",
+      "core_merge_conflicts_mergereport",
+      "core_merge_conflicts_semanticconflict",
+      "core_merge_strategies",
+      "core_merge_strategies_semanticmergeengine",
+      "core_merge_strategies_semanticmergeengine_constructor",
+      "core_merge_strategies_semanticmergeengine_merge",
+      "core_merge_strategies_semanticmergeengine_trymergetext",
+      "tests_merge_merge_test"
     ],
-    "26": [
+    "30": [
       "tsconfig",
       "tsconfig_compileroptions",
       "tsconfig_compileroptions_declaration",
@@ -823,7 +871,19 @@
       "tsconfig_compileroptions_target",
       "tsconfig_include"
     ],
-    "27": [
+    "31": [
+      "core_graph_branch_branchmanager",
+      "core_graph_branch_branchmanager_checkout",
+      "core_graph_branch_branchmanager_constructor",
+      "core_graph_branch_branchmanager_createbranch",
+      "core_graph_branch_branchmanager_getactivebranch",
+      "core_graph_branch_branchmanager_getactivebranchname",
+      "core_graph_branch_branchmanager_getbranch",
+      "core_graph_branch_branchmanager_init",
+      "core_graph_branch_branchmanager_listbranches",
+      "core_graph_branch_branchmanager_updatehead"
+    ],
+    "32": [
       "docs_00_start_here",
       "docs_00_start_here_reading_order",
       "docs_00_start_here_start_here",
@@ -835,7 +895,7 @@
       "docs_00_start_here_the_one_sentence_version",
       "docs_00_start_here_your_identity"
     ],
-    "28": [
+    "33": [
       "spec_cql",
       "spec_cql_1_overview",
       "spec_cql_2_formal_grammar_ebnf",
@@ -847,7 +907,7 @@
       "spec_cql_example_2_find_all_changes_to_a_specific_authentication_file",
       "spec_cql_example_3_inspect_divergence_between_two_branches"
     ],
-    "29": [
+    "34": [
       "non_goals",
       "non_goals_1_chrono_is_not_a_screen_or_pixel_video_recorder",
       "non_goals_2_chrono_is_not_a_replacement_for_git",
@@ -858,7 +918,7 @@
       "non_goals_7_chrono_is_not_a_monolithic_ide_or_editor_fork",
       "non_goals_chrono_non_goals"
     ],
-    "30": [
+    "35": [
       "principles",
       "principles_chrono_principles",
       "principles_rule_1_state_is_never_destroyed",
@@ -869,7 +929,17 @@
       "principles_rule_6_cql_is_the_truth_ai_and_natural_language_are_frontend_views",
       "principles_rule_7_local_sovereignty_and_zero_secret_leakage"
     ],
-    "31": [
+    "36": [
+      "core_compress_dedupe",
+      "core_compress_dedupe_contentdeduplicator",
+      "core_compress_dedupe_contentdeduplicator_blockcount",
+      "core_compress_dedupe_contentdeduplicator_get",
+      "core_compress_dedupe_contentdeduplicator_has",
+      "core_compress_dedupe_contentdeduplicator_hashcontent",
+      "core_compress_dedupe_contentdeduplicator_intern",
+      "ref_node_crypto"
+    ],
+    "37": [
       "decisions_0001_why_a_dag_not_a_log",
       "decisions_0001_why_a_dag_not_a_log_adr_0001_why_a_directed_acyclic_graph_dag_instead_of_a_linear_log",
       "decisions_0001_why_a_dag_not_a_log_consequences",
@@ -879,7 +949,7 @@
       "decisions_0001_why_a_dag_not_a_log_status",
       "decisions_0001_why_a_dag_not_a_log_trade_offs_mitigations"
     ],
-    "32": [
+    "38": [
       "decisions_0002_semantic_deltas_vs_byte_diffs",
       "decisions_0002_semantic_deltas_vs_byte_diffs_adr_0002_semantic_deltas_vs_byte_level_diffs",
       "decisions_0002_semantic_deltas_vs_byte_diffs_consequences",
@@ -889,7 +959,7 @@
       "decisions_0002_semantic_deltas_vs_byte_diffs_status",
       "decisions_0002_semantic_deltas_vs_byte_diffs_trade_offs_mitigations"
     ],
-    "33": [
+    "39": [
       "decisions_0003_local_first_storage",
       "decisions_0003_local_first_storage_adr_0003_local_first_storage_architecture",
       "decisions_0003_local_first_storage_consequences",
@@ -899,7 +969,7 @@
       "decisions_0003_local_first_storage_status",
       "decisions_0003_local_first_storage_trade_offs_mitigations"
     ],
-    "34": [
+    "40": [
       "decisions_0004_why_a_query_language",
       "decisions_0004_why_a_query_language_adr_0004_why_a_dedicated_chrono_query_language_cql",
       "decisions_0004_why_a_query_language_consequences",
@@ -909,7 +979,7 @@
       "decisions_0004_why_a_query_language_status",
       "decisions_0004_why_a_query_language_trade_offs_mitigations"
     ],
-    "35": [
+    "41": [
       "readme",
       "readme_architecture_decisions_adrs",
       "readme_architecture_specifications",
@@ -919,7 +989,7 @@
       "readme_the_8_must_decide_files_before_coding",
       "readme_what_is_chrono"
     ],
-    "36": [
+    "42": [
       "ai_contracts_intent_parse",
       "ai_contracts_intent_parse_1_objective",
       "ai_contracts_intent_parse_2_invariants_guardrails",
@@ -928,7 +998,7 @@
       "ai_contracts_intent_parse_5_output_json_schema",
       "ai_contracts_intent_parse_ai_contract_natural_language_to_cql_compiler"
     ],
-    "37": [
+    "43": [
       "ai_contracts_summarize",
       "ai_contracts_summarize_1_objective",
       "ai_contracts_summarize_2_invariants_guardrails",
@@ -937,16 +1007,16 @@
       "ai_contracts_summarize_5_output_json_schema",
       "ai_contracts_summarize_ai_contract_timeline_branch_summarization"
     ],
-    "38": [
-      "core_graph_delta",
-      "core_graph_delta_deltapayload",
-      "core_graph_delta_filemutationoperation",
-      "core_graph_delta_inverttextsplice",
-      "core_graph_delta_semanticdelta",
-      "core_graph_delta_terminalexecoperation",
-      "core_graph_delta_textspliceoperation"
+    "44": [
+      "core_clock_timeline",
+      "core_clock_timeline_timelineentry",
+      "core_clock_timeline_timelineindex",
+      "core_clock_timeline_timelineindex_findnearesttotime",
+      "core_clock_timeline_timelineindex_findrange",
+      "core_clock_timeline_timelineindex_getrecent",
+      "core_clock_timeline_timelineindex_indexnode"
     ],
-    "39": [
+    "45": [
       "spec_adapter_contract",
       "spec_adapter_contract_1_overview",
       "spec_adapter_contract_2_adapter_capability_tiers",
@@ -955,7 +1025,7 @@
       "spec_adapter_contract_5_security_secret_redaction_mandate",
       "spec_adapter_contract_chrono_specification_adapter_contract"
     ],
-    "40": [
+    "46": [
       "store_format_on_disk",
       "store_format_on_disk_1_directory_structure",
       "store_format_on_disk_2_content_addressing_hash_commitment",
@@ -964,7 +1034,7 @@
       "store_format_on_disk_5_ingress_write_ahead_log_wal",
       "store_format_on_disk_chrono_specification_on_disk_storage_format"
     ],
-    "41": [
+    "47": [
       "ai_contracts_semantic_diff",
       "ai_contracts_semantic_diff_1_objective",
       "ai_contracts_semantic_diff_2_invariants_guardrails",
@@ -972,15 +1042,7 @@
       "ai_contracts_semantic_diff_4_output_json_schema",
       "ai_contracts_semantic_diff_ai_contract_semantic_diff_explainer"
     ],
-    "42": [
-      "demo_serve",
-      "demo_serve_dirname",
-      "demo_serve_html_file",
-      "demo_serve_server",
-      "ref_node_http",
-      "ref_node_url"
-    ],
-    "43": [
+    "48": [
       "manifesto",
       "manifesto_chrono_manifesto",
       "manifesto_the_core_thesis",
@@ -988,56 +1050,66 @@
     ]
   },
   "cohesion": {
-    "0": 0.06225014277555682,
-    "1": 0.06896551724137931,
-    "2": 0.12941176470588237,
-    "3": 0.048726467331118496,
-    "4": 0.07692307692307693,
+    "0": 0.05706760316066725,
+    "1": 0.12669683257918551,
+    "2": 0.10409745293466224,
+    "3": 0.05128205128205128,
+    "4": 0.07681365576102418,
     "5": 0.05263157894736842,
     "6": 0.0625,
-    "7": 0.06896551724137931,
-    "8": 0.09523809523809523,
-    "9": 0.07407407407407407,
-    "10": 0.07692307692307693,
-    "11": 0.07692307692307693,
-    "12": 0.08333333333333333,
-    "13": 0.08333333333333333,
-    "14": 0.08695652173913043,
-    "15": 0.1,
-    "16": 0.10526315789473684,
-    "17": 0.10526315789473684,
-    "18": 0.1111111111111111,
-    "19": 0.1111111111111111,
-    "20": 0.11764705882352941,
-    "21": 0.125,
-    "22": 0.125,
-    "23": 0.13333333333333333,
-    "24": 0.14285714285714285,
-    "25": 0.38461538461538464,
-    "26": 0.16666666666666666,
-    "27": 0.2,
-    "28": 0.2,
-    "29": 0.2222222222222222,
-    "30": 0.2222222222222222,
-    "31": 0.25,
-    "32": 0.25,
-    "33": 0.25,
-    "34": 0.25,
-    "35": 0.25,
+    "7": 0.12807881773399016,
+    "8": 0.06896551724137931,
+    "9": 0.09523809523809523,
+    "10": 0.14814814814814814,
+    "11": 0.07407407407407407,
+    "12": 0.07692307692307693,
+    "13": 0.07692307692307693,
+    "14": 0.08333333333333333,
+    "15": 0.08333333333333333,
+    "16": 0.08695652173913043,
+    "17": 0.09090909090909091,
+    "18": 0.1,
+    "19": 0.10526315789473684,
+    "20": 0.10526315789473684,
+    "21": 0.1111111111111111,
+    "22": 0.27205882352941174,
+    "23": 0.11764705882352941,
+    "24": 0.11764705882352941,
+    "25": 0.20833333333333334,
+    "26": 0.125,
+    "27": 0.13333333333333333,
+    "28": 0.14285714285714285,
+    "29": 0.2948717948717949,
+    "30": 0.16666666666666666,
+    "31": 0.2222222222222222,
+    "32": 0.2,
+    "33": 0.2,
+    "34": 0.2222222222222222,
+    "35": 0.2222222222222222,
     "36": 0.2857142857142857,
-    "37": 0.2857142857142857,
-    "38": 0.2857142857142857,
-    "39": 0.2857142857142857,
-    "40": 0.2857142857142857,
-    "41": 0.3333333333333333,
-    "42": 0.3333333333333333,
-    "43": 0.5
+    "37": 0.25,
+    "38": 0.25,
+    "39": 0.25,
+    "40": 0.25,
+    "41": 0.25,
+    "42": 0.2857142857142857,
+    "43": 0.2857142857142857,
+    "44": 0.2857142857142857,
+    "45": 0.2857142857142857,
+    "46": 0.2857142857142857,
+    "47": 0.3333333333333333,
+    "48": 0.5
   },
   "gods": [
     {
       "id": "core_graph_dag_chronodag",
       "label": "ChronoDAG",
-      "degree": 45
+      "degree": 56
+    },
+    {
+      "id": "core_graph_node_statenode",
+      "label": "StateNode",
+      "degree": 43
     },
     {
       "id": "planning_graphs_graph_report_communities_37_total_0_thin_omitted",
@@ -1045,14 +1117,9 @@
       "degree": 38
     },
     {
-      "id": "core_graph_node_statenode",
-      "label": "StateNode",
-      "degree": 36
-    },
-    {
       "id": "core_graph_node_cid",
       "label": "CID",
-      "degree": 31
+      "degree": 32
     },
     {
       "id": "docs_12_glossary_glossary",
@@ -1099,28 +1166,17 @@
     },
     {
       "source": "God Nodes (most connected - your core abstractions)",
-      "target": "ChronoDAG",
+      "target": "StateNode",
       "source_files": [
         ".planning/graphs/GRAPH_REPORT.md",
-        "core/graph/dag.ts"
+        "core/graph/node.ts"
       ],
       "confidence": "INFERRED",
       "relation": "references",
       "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities"
     },
     {
-      "source": "Suggested Questions",
-      "target": "ChronoDAG",
-      "source_files": [
-        ".planning/graphs/GRAPH_REPORT.md",
-        "core/graph/dag.ts"
-      ],
-      "confidence": "INFERRED",
-      "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities"
-    },
-    {
-      "source": "God Nodes (most connected - your core abstractions)",
+      "source": "Surprising Connections (you probably didn't know these)",
       "target": "StateNode",
       "source_files": [
         ".planning/graphs/GRAPH_REPORT.md",
@@ -1136,6 +1192,17 @@
       "source_files": [
         "spec/MERGE_SEMANTICS.md",
         "core/merge/conflicts.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code \u2194 doc); connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "Surprising Connections (you probably didn't know these)",
+      "target": "ChronoAdapter",
+      "source_files": [
+        ".planning/graphs/GRAPH_REPORT.md",
+        "adapters/sdk/adapter.ts"
       ],
       "confidence": "INFERRED",
       "relation": "references",
